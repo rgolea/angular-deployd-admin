@@ -50,4 +50,19 @@ Use Grunt watch to be able to change the files automatically. You can do that by
 grunt watch
 ```
 ---
+###Running the app
+
+You can run the app by starting mongodb and the entire app.
+
+MongoDB:
+```
+mongod 
+```
+
+Application:
+```
+npm start
+```
+
+---
 ####Thank you
