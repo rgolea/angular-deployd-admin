@@ -1,0 +1,20 @@
+<form action="" ng-submit="add()">
+    <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Username">
+        <br>
+        <input type="text" class="form-control" placeholder="First name">
+        <br>
+        <input type="text" class="form-control" placeholder="Last name">
+        <br>
+        <button class="btn btn-primary btn-block">Submit</button>
+    </div>
+    <div class="col-md-6">
+        <span class="btn btn-default btn-file btn-block">
+            Browse
+            <input type="file" name="image" ng-file accept="image/png,image/jpeg" ng-format="image/png" ng-max-width="300" ng-max-height="300" style="opacity:0;" />
+        </span>
+
+        <h3>Roles</h3>
+        <hr>
+    </div>
+</form>
