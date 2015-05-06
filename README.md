@@ -1,6 +1,7 @@
 # angular-deployd-admin
-
+---
 This is an Angular.js & Deployd admin system. It's been maintained by [@rgolea](https://github.com/rgolea) and [@vaesergio](https://github.com/vaesergio).
+
 ---
 ###Download
 To download paste this command in your terminal window:
