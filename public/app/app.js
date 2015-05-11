@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'ui.router', 'file-data-url']);
+var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url']);
 
 app.value('BASE_URL', '');
 
@@ -9,22 +9,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         .state('login', {
             url: '/login',
             templateUrl: '/dist/app/users/partials/login.html',
-            controller: 'usersCtrl'
-        })
-        .state('dashboard', {
-            url: '/dashboard',
-            templateUrl: '/dist/app/dashboard.html',
-            abstract: true,
-            authenticate: true
-        })
-        .state('dashboard.users', {
-            url: '/users',
-            templateUrl: '/dist/app/users/partials/dashboard.users.html',
-            controller: 'usersCtrl'
-        })
-        .state('dashboard.users.add', {
-            url: '/add',
-            templateUrl: '/dist/app/users/partials/dashboard.users.addedit.html',
             controller: 'usersCtrl'
         });
 }]);

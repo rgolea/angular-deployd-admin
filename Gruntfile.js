@@ -4,19 +4,20 @@ module.exports = function (grunt) {
         concat: {
             js: {
                 src: [
-                    './bower_components/jquery/dist/jquery.js',
-                    './bower_components/boostrap/dist/js/bootstrap.js',
                     './bower_components/angular/angular.js',
+                    './bower_components/angular-animate/angular-animate.js',
+                    './bower_components/angular-aria/angular-aria.js',
                     './bower_components/angular-resource/angular-resource.js',
+                    './bower_components/angular-material/angular-material.js',
                     './bower_components/angular-ui-router/release/angular-ui-router.js',
-                    './bower_components/angular-file-data-url/src/*.js',
+                    './bower_components/angular-file-data-url/src/fileDataUrl.js',
                     './public/app/**/*.js'
                 ],
                 dest: './public/dist/script.js'
             },
             css: {
                 src: [
-                    './bower_components/bootstrap/dist/css/bootstrap.css',
+                    './bower_components/angular-material/angular-material.css',
                     './public/css/**/*.css'
                 ],
                 dest: './public/dist/style.css'
@@ -55,13 +56,6 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            fonts: {
-                cwd: './bower_components/bootstrap/fonts/',
-                src: '**',
-                dest: './public/fonts/',
-                expand: true,
-                flatten: true
-            },
             html: {
                 cwd: './public/app/',
                 src: '**/*.html',
