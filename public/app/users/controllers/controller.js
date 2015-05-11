@@ -8,14 +8,20 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
     });
 
     $rootScope.$on('user:logout', function () {
-        $scope.users = Users.query();
+        delete $scope.users;
     });
 
     //    Save form
 
     $scope.save = function () {
+        var i = $scope.users.indexOf($scope.newUser);
         $scope.newUser.$save().then(function (success) {
-            $scope.users.push(success);
+            if (i > 0) {
+                $scope.users[i] = success;
+            } else {
+                $scope.users.push(success);
+            };
+
             $mdToast.show(
                 $mdToast.simple()
                 .content('Saved!')
@@ -43,13 +49,21 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
 
     $scope.login = function () {
         $scope.newUser.$login().then(function (success) {
-            $state.go('dashboard.users');
+            $state.go('dashboard.intro');
             $rootScope.$broadcast('user:login');
         }, function (err) {
             if (err.status == 401) {
-                $scope.error = "Username or password invalid.";
+                $mdToast.show(
+                    $mdToast.simple()
+                    .content('Username or password invalid!')
+                    .position('right bottom')
+                );
             } else {
-                $scope.error = "Fatal error. Please check log."
+                $mdToast.show(
+                    $mdToast.simple()
+                    .content('An error occured. Please check log.')
+                    .position('right bottom')
+                );
                 console.log(err);
             };
 

@@ -33,26 +33,26 @@
                     <img ng-show="newUser.photo" ng-src="{{newUser.photo}}" style="width:100px; height:100px; border-radius:50px;" />
                 </center>
                 <br>
-                <form action="" ng-submit="save()" style="min-width:100%;">
+                <form ng-submit="save()" style="min-width:100%;">
                     <md-input-container flex>
                         <label>Username</label>
-                        <input type="text" ng-model="newUser.username">
+                        <input type="text" ng-model="newUser.username" autocomplete="off">
                     </md-input-container>
                     <md-input-container>
                         <label>First name</label>
-                        <input type="text" ng-model="newUser.firstName">
+                        <input type="text" ng-model="newUser.firstName" autocomplete="off">
                     </md-input-container>
                     <md-input-container>
                         <label>Last name</label>
-                        <input type="text" ng-model="newUser.lastName">
+                        <input type="text" ng-model="newUser.lastName" autocomplete="off">
                     </md-input-container>
                     <md-input-container>
                         <label>Email</label>
-                        <input type="email" ng-model="newUser.email">
+                        <input type="email" ng-model="newUser.email" autocomplete="off">
                     </md-input-container>
                     <md-input-container>
                         <label>Password</label>
-                        <input type="password" ng-model="newUser.password">
+                        <input type="password" ng-model="newUser.password" autocomplete="off">
                     </md-input-container>
                     <md-container layout="row">
                         <md-container layout="column" layout-align="space-around start" flex="50">

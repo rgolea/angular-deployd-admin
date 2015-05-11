@@ -22,11 +22,15 @@
     </md-toolbar>
     <md-content>
         <md-list ng-controller="dashboardCtrl">
-            <md-list-item ng-click="state('dashboard.users')">
-                Users
+           <md-list-item ng-click="state('dashboard.intro')">
+                Home
             </md-list-item>
-            <md-list-item ng-click="state('dashboard.users')">
-                Settings
+            <md-divider></md-divider>
+            <md-list-item ng-click="state('dashboard.posts')" ng-if="me.admin || me.posts">
+                Posts
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.users')" ng-if="me.admin">
+                Users
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item ng-controller="usersCtrl">
