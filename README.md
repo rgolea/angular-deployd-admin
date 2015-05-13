@@ -52,7 +52,7 @@ grunt watch
 ---
 ###Running the app
 
-You can run the app by starting mongodb and the entire app. After that, open your browser and go to [http://localhost:2043/dashboard](http://localhost:2043/dashboard). Go to the users collection and add an admin user.
+You can run the app by starting mongodb and the entire app. After that, open your browser and go to [http://localhost:2403/dashboard](http://localhost:2403/dashboard). Go to the users collection and add an admin user.
 
 MongoDB:
 ```
