@@ -1,11 +1,11 @@
-<md-content style="height: 600px;">
-    <md-subheader>
-        <h1>Users</h1>
-        <md-button ng-click="add()" class="md-primary">Add</md-button>
-        <md-button ng-click="showForm = false" ng-show="showForm">Hide</md-button>
-    </md-subheader>
+<md-subheader>
+    <h1>Users</h1>
+    <md-button ng-click="add()" class="md-primary">Add</md-button>
+    <md-button ng-click="hide()" ng-show="showForm">Hide</md-button>
+</md-subheader>
+<md-content>
     <md-content layout="column" layout-padding layout-gt-md="row">
-        <section flex="50">
+        <section flex>
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="edit(user)">
                     <img ng-if="!user.photo" ng-src="http://www.placehold.it/300x300" class="md-avatar" />

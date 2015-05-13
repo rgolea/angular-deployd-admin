@@ -1,3 +1,52 @@
-<md-content>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ex sequi ipsam ad autem est laudantium dicta perspiciatis, libero dolore optio enim praesentium molestiae quis a natus? Quam ratione consequuntur quae omnis laborum nostrum culpa repellat, consectetur, aut ad. Autem adipisci consectetur culpa quibusdam qui recusandae voluptatum quidem impedit tempora rem, ab, placeat aut, debitis suscipit! Consectetur sunt sed, consequuntur, doloribus deserunt quidem, aut hic placeat iusto alias est laboriosam iure, obcaecati dignissimos facilis. Magnam dolorem inventore ipsam sed, adipisci rerum culpa cum ratione amet, nihil atque veniam voluptates harum dolores voluptas minus doloribus incidunt repudiandae, asperiores, iure exercitationem excepturi aperiam laboriosam repellendus. Nihil, consequatur eos placeat error tempora, repudiandae optio excepturi ipsum explicabo possimus ad quo? Incidunt dicta nemo suscipit consequuntur maxime, ad fugit animi facere minus, nihil, hic praesentium reiciendis sunt unde alias quam amet consequatur ut totam ipsum veritatis dolorum sint! Voluptatem adipisci quibusdam animi esse reprehenderit nisi consequuntur nesciunt explicabo illum velit. Voluptatem totam, eius sequi rerum quibusdam inventore vel voluptatum, officiis, consectetur deleniti ullam! Ut eaque, officia in. Magnam quod, quam dolores fuga et impedit commodi earum quidem provident neque enim in facilis ea, ducimus eum! Magni asperiores modi quidem deleniti, velit perspiciatis deserunt, dignissimos reprehenderit dicta, unde esse earum vero illo. Magnam consequuntur animi dolore quam quos in, ratione quo, suscipit repellat, sapiente ipsa temporibus ea. Possimus, voluptas. Quia eum nihil enim est, possimus eos hic, sunt quidem dolore modi blanditiis molestiae architecto laudantium consequuntur nostrum ratione? Odio corporis beatae nobis suscipit explicabo repellendus veritatis, placeat voluptatem? Cupiditate, sapiente, itaque quidem eaque voluptatum deleniti a aut repellendus reprehenderit quisquam sunt aliquid! Placeat, commodi! Recusandae ad, obcaecati sit unde non odit cum quae fuga dolorem sunt nemo facilis magni eum quasi numquam eligendi quo inventore, ipsa corrupti tempora reprehenderit fugit similique dolorum quaerat! Cumque, excepturi.
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Posts</h1>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <md-list-item ng-hide="posts.length">No posts.</md-list-item>
+            <md-list-item ng-show="posts" ng-repeat="post in posts" ng-click="show(post)">{{post.title}}
+                <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, post)" class="md-secondary"></md-icon>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="toggle()">
+                Close
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<md-button class="md-fab md-primary md-hue-3" ng-click="toggle()" style="margin:10px;">
+    <md-icon md-svg-src="icons/menu.svg"></md-icon>
+</md-button>
+<md-content layout="column" layout-gt-md="row">
+    <md-content layout="column" flex>
+        <h3>Markdown</h3>
+        <form ng-submit="save()">
+            <md-input-container>
+                <label>Title</label>
+                <input type="text" ng-model="newPost.title" ng-change="slugify()">
+            </md-input-container>
+            <md-input-container>
+                <label>Slug</label>
+                <input type="text" ng-model="newPost.slug">
+            </md-input-container>
+            <md-input-container>
+                <label>Content</label>
+                <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content"></textarea>
+            </md-input-container>
+            <md-chips ng-model="newPost.tags" placeholder="Add more..." secondary-placeholder="Tags"></md-chips>
+            <md-checkbox ng-model="newPost.static">Static</md-checkbox>
+            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+            <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
+        </form>
+    </md-content>
+    <md-content layout="column" flex>
+        <h3>Preview</h3>
+        <h1>{{newPost.title}}</h1>
+        <center>
+            <md-content layout="column" marked="newPost.content"></md-content>
+        </center>
+        <span flex></span>
+        <md-button ng-if="newPost.slug" ng-href="/#/posts/{{newPost.slug}}">/posts/{{newPost.slug}}</md-button>
+    </md-content>
 </md-content>

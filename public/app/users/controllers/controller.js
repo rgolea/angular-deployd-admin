@@ -121,5 +121,10 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
             $scope.newUser.posts = true;
         }
     };
+    
+    $scope.hide = function(){
+        $scope.reset();
+        $scope.showForm = false;
+    };
 
 }]);

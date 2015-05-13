@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url']);
+var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url', 'hc.marked', 'slugifier']);
 
 app.value('BASE_URL', '');
 
@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         .state('dashboard', {
             url: '/dashboard',
             templateUrl: '/dist/app/dashboard.html',
-            abstract:true,
+            abstract: true,
             data: {
                 auth: true
             }

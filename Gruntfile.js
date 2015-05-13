@@ -11,6 +11,8 @@ module.exports = function (grunt) {
                     './bower_components/angular-material/angular-material.js',
                     './bower_components/angular-ui-router/release/angular-ui-router.js',
                     './bower_components/angular-file-data-url/src/fileDataUrl.js',
+                    './bower_components/marked/lib/marked.js',
+                    './bower_components/angular-marked/angular-marked.js',
                     './public/app/**/*.js'
                 ],
                 dest: './public/dist/script.js'
