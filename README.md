@@ -64,6 +64,8 @@ Application:
 npm start
 ```
 
+
+
 Open your browser and go to [http://localhost:2043/dashboard](http://localhost:2043/dashboard). Go to the users collection and add an admin user.
 ---
 ####Thank you
