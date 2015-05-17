@@ -1,30 +1,30 @@
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+<md-sidenav class="md-sidenav-left md-whiteframe-z5" md-component-id="left">
     <md-toolbar>
         <h1 class="md-toolbar-tools">Posts</h1>
     </md-toolbar>
     <md-content>
         <md-list>
             <md-list-item ng-hide="posts.length">No posts.</md-list-item>
-            <md-list-item ng-show="posts" ng-repeat="post in posts" ng-click="show(post)">{{post.title}}
+            <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created'" ng-click="show(post)">{{post.title}}
                 <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, post)" class="md-secondary"></md-icon>
             </md-list-item>
             <md-divider></md-divider>
-            <md-list-item ng-click="toggle()">
+            <md-list-item ng-click="toggle()" class="md-warn">
                 Close
             </md-list-item>
         </md-list>
     </md-content>
 </md-sidenav>
-<md-button class="md-fab md-primary md-hue-3" ng-click="toggle()" style="margin:10px;">
+<md-button class="md-fab md-accent" ng-click="toggle()" style="margin:10px;">
     <md-icon md-svg-src="icons/menu.svg"></md-icon>
 </md-button>
-<md-content layout="column" layout-gt-md="row">
+<md-content layout="column" layout-gt-md="row" layout-padding>
     <md-content layout="column" flex>
         <h3>Markdown</h3>
         <form ng-submit="save()">
             <md-input-container>
                 <label>Title</label>
-                <input type="text" ng-model="newPost.title" ng-change="slugify()">
+                <input type="text" ng-model="newPost.title" ng-change="slugify()" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id">
             </md-input-container>
             <md-input-container>
                 <label>Slug</label>
@@ -32,10 +32,10 @@
             </md-input-container>
             <md-input-container>
                 <label>Content</label>
-                <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content"></textarea>
+                <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id"></textarea>
             </md-input-container>
-            <md-chips ng-model="newPost.tags" placeholder="Add more..." secondary-placeholder="Tags"></md-chips>
-            <md-checkbox ng-model="newPost.static">Static</md-checkbox>
+            <md-chips ng-model="newPost.tags" placeholder="Add more..." secondary-placeholder="Tags" readonly="newPost.creator !== me.id && !me.admin && newPost.id"></md-chips>
+            <md-checkbox ng-model="newPost.static" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id">Static</md-checkbox>
             <md-button class="md-primary md-raised" type="submit">Submit</md-button>
             <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
         </form>
@@ -43,6 +43,8 @@
     <md-content layout="column" flex>
         <h3>Preview</h3>
         <h1>{{newPost.title}}</h1>
+        <h6 ng-if="newPost.user">{{newPost.user.lastName}}, {{newPost.user.firstName}}</h6>
+        <h6 ng-if="!newPost.user && newPost.title">{{me.lastName}}, {{me.firstName}}</h6>
         <center>
             <md-content layout="column" marked="newPost.content"></md-content>
         </center>
@@ -50,3 +52,8 @@
         <md-button ng-if="newPost.slug" ng-href="/#/posts/{{newPost.slug}}">/posts/{{newPost.slug}}</md-button>
     </md-content>
 </md-content>
+<style>
+    img{
+        max-width: 100%;
+    }
+</style>

@@ -17,12 +17,40 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             abstract: true,
             data: {
                 auth: true
+            },
+            resolve: {
+                role: ['$q', 'Users', function ($q, Users) {
+                    var defer = $q.defer();
+                    Users.me(function (me) {
+                        if (me) {
+                            defer.resolve(200);
+                        } else {
+                            defer.reject(403);
+                        }
+                    });
+
+                    return defer.promise;
+                }]
             }
         }).state('dashboard.intro', {
             url: '/intro',
             templateUrl: '/dist/app/dashboard.intro.html',
             data: {
                 auth: true
+            },
+            resolve: {
+                role: ['$q', 'Users', function ($q, Users) {
+                    var defer = $q.defer();
+                    Users.me(function (me) {
+                        if (me) {
+                            defer.resolve(200);
+                        } else {
+                            defer.reject(403);
+                        }
+                    });
+
+                    return defer.promise;
+                }]
             }
         });
 }]);
@@ -41,9 +69,10 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
     });
 
     $rootScope.$on('user:logout', function () {
-        $state.go('login');
+        Users.logout();
         delete sessionStorage.authenticated;
         delete $rootScope.me;
+        $state.go('login');
     });
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -61,7 +90,6 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
                 .position('right bottom')
             );
 
-            $state.go('dashboard.intro');
         } else {
             $mdToast.show(
                 $mdToast.simple()
@@ -69,6 +97,13 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
                 .position('right bottom')
             );
         }
+
+        if ($rootScope.me == undefined) {
+            $state.go('login');
+        } else {
+            $state.go('dashboard.intro');
+        }
+
 
     });
 }]);

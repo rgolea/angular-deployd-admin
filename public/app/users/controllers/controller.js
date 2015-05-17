@@ -3,13 +3,6 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
     //    Setting up
     $scope.newUser = new Users();
     $scope.users = Users.query();
-    $rootScope.$on('user:login', function () {
-        $scope.users = Users.query();
-    });
-
-    $rootScope.$on('user:logout', function () {
-        delete $scope.users;
-    });
 
     //    Save form
 
@@ -102,8 +95,14 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
             user.$delete().then(function (success) {
                 var i = $scope.users.indexOf(user);
                 $scope.users.splice(i, 1);
+                $scope.reset();
             }, function (err) {
                 console.log(err);
+                $mdToast.show(
+                    $mdToast.simple()
+                    .content('An error occured!')
+                    .position('right bottom')
+                );
             });
         });
     };
@@ -119,10 +118,11 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
             $scope.newUser.main = true;
             $scope.newUser.polls = true;
             $scope.newUser.posts = true;
+            $scope.newUser.comments = true;
         }
     };
-    
-    $scope.hide = function(){
+
+    $scope.hide = function () {
         $scope.reset();
         $scope.showForm = false;
     };

@@ -1,0 +1,33 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z5" md-component-id="left">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Posts - Comments</h1>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <md-list-item ng-hide="posts.length">No posts.</md-list-item>
+            <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created'" ng-click="find(post)">{{post.title}}
+                <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, post)" class="md-secondary"></md-icon>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="toggle()">
+                Close
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<md-button class="md-fab md-accent" ng-click="toggle()" style="margin:10px;">
+    <md-icon md-svg-src="icons/menu.svg"></md-icon>
+</md-button>
+<md-content layout-padding>
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="comment in comments" ng-click="allow()">
+            <div class="md-list-item-text">
+                <h3>{{comment.comment}}</h3>
+                <h4>{{comment.user.firstName}} {{comment.user.lastName}}</h4>
+                <p ng-if="comment.allow">Allowed</p>
+                <p ng-if="!comment.allow">Not allowed</p>
+                <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, post)" class="md-secondary"></md-icon>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>

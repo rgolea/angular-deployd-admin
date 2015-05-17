@@ -41,13 +41,21 @@
 			"id": "tags",
 			"order": 4
 		},
-		"comments": {
-			"name": "comments",
-			"type": "array",
-			"typeLabel": "array",
+		"creator": {
+			"name": "creator",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "comments",
+			"id": "creator",
 			"order": 5
+		},
+		"created": {
+			"name": "created",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "created",
+			"order": 6
 		}
 	}
 }

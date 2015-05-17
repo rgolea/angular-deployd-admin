@@ -57,17 +57,20 @@
                     <md-container layout="row">
                         <md-container layout="column" layout-align="space-around start" flex="50">
                             <h3>Roles</h3>
-                            <md-switch ng-model="newUser.admin" ng-change="isAdmin()">
+                            <md-switch ng-model="newUser.admin" ng-change="isAdmin()" class="md-primary">
                                 Administrator
                             </md-switch>
-                            <md-switch ng-model="newUser.main" ng-change="verifyAdmin(newUser.main)">
+                            <md-switch ng-model="newUser.main" ng-change="verifyAdmin(newUser.main)" class="md-primary">
                                 Main content
                             </md-switch>
-                            <md-switch ng-model="newUser.posts" ng-change="verifyAdmin(newUser.posts)">
+                            <md-switch ng-model="newUser.posts" ng-change="verifyAdmin(newUser.posts)" class="md-primary">
                                 Publications
                             </md-switch>
-                            <md-switch ng-model="newUser.polls" ng-change="verifyAdmin(newUser.polls)">
+                            <md-switch ng-model="newUser.polls" ng-change="verifyAdmin(newUser.polls)" class="md-primary">
                                 Polls
+                            </md-switch>
+                            <md-switch ng-model="newUser.comments" ng-change="verifyAdmin(newUser.comments)" class="md-primary">
+                                Comments
                             </md-switch>
                         </md-container>
                         <md-container flex="50">

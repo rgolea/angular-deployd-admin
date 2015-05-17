@@ -64,6 +64,14 @@
 			"required": false,
 			"id": "polls",
 			"order": 7
+		},
+		"comments": {
+			"name": "comments",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "comments",
+			"order": 8
 		}
 	}
 }

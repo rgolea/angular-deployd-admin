@@ -1,34 +1,27 @@
-app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slug', '$mdToast', '$mdDialog', function($scope, Posts, $mdSidenav, $rootScope, Slug, $mdToast, $mdDialog){
-    $scope.toggle = function(){
+app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slug', '$mdToast', '$mdDialog', function ($scope, Posts, $mdSidenav, $rootScope, Slug, $mdToast, $mdDialog) {
+    $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-    
-    $scope.posts = Posts.query();
-    
-    $rootScope.$on('user:login', function () {
-        $scope.posts = Posts.query();
-    });
 
-    $rootScope.$on('user:logout', function () {
-        delete $scope.posts;
-    });
-    
+    $scope.posts = Posts.query({includeAuthor: true});
+
     $scope.newPost = new Posts();
     $scope.newPost.tags = [];
-    
-    $scope.slugify = function(){
+
+    $scope.slugify = function () {
         $scope.newPost.slug = Slug.slugify($scope.newPost.title);
     };
-    
-    $scope.reset = function(){
+
+    $scope.reset = function () {
         $scope.newPost = new Posts();
+        $scope.newPost.tags = [];
     };
-    
-    $scope.show = function(post){
+
+    $scope.show = function (post) {
         $scope.newPost = post;
     };
-    
-    $scope.save = function(){
+
+    $scope.save = function () {
         var i = $scope.posts.indexOf($scope.newPost);
         $scope.newPost.$save().then(function (success) {
             if (i > 0) {
@@ -44,15 +37,23 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
             );
             $scope.reset();
         }, function (err) {
-            console.log(err);
-            $mdToast.show(
-                $mdToast.simple()
-                .content('An error occured!')
-                .position('right bottom')
-            );
+            if (err.status === 401) {
+                $mdToast.show(
+                    $mdToast.simple()
+                    .content('Unauthorized')
+                    .position('right bottom')
+                );
+            } else {
+                console.log(err);
+                $mdToast.show(
+                    $mdToast.simple()
+                    .content('An error occured!')
+                    .position('right bottom')
+                );
+            }
         });
     };
-    
+
     $scope.delete = function ($event, post) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -67,8 +68,23 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
             post.$delete().then(function (success) {
                 var i = $scope.posts.indexOf(post);
                 $scope.posts.splice(i, 1);
+                $scope.reset();
             }, function (err) {
                 console.log(err);
+                if (err.status === 401) {
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .content('Unauthorized.')
+                        .position('right bottom')
+                    );
+                } else {
+                    console.log(err);
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .content('An error occured!')
+                        .position('right bottom')
+                    );
+                }
             });
         });
     };

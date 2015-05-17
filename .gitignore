@@ -4,3 +4,4 @@ bower_components
 .dpd
 data
 public/fonts
+npm-debug.log
