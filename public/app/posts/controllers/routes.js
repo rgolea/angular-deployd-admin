@@ -10,7 +10,7 @@ app.config(['$stateProvider', function ($stateProvider) {
             resolve: {
                 role: ['$q', 'Users', function ($q, Users) {
                     var defer = $q.defer();
-                    Users.me(function(me){
+                    Users.me(function (me) {
                         if (me.admin || me.posts) {
                             defer.resolve(200);
                         } else {

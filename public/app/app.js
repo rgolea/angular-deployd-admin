@@ -2,7 +2,10 @@ var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAri
 
 app.value('BASE_URL', '');
 
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    
+    $locationProvider.html5Mode(true).hashPrefix('!');
+    
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider

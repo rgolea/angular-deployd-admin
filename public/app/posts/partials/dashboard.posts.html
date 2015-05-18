@@ -15,9 +15,13 @@
         </md-list>
     </md-content>
 </md-sidenav>
-<md-button class="md-fab md-accent" ng-click="toggle()" style="margin:10px;">
-    <md-icon md-svg-src="icons/menu.svg"></md-icon>
-</md-button>
+<md-content layout="row" layout-align="space-between center" layout-padding>
+    <md-button class="md-fab md-accent" ng-click="toggle()">
+        <md-icon md-svg-src="icons/menu.svg"></md-icon>
+    </md-button>
+    <md-button class="md-raised md-accent md-hue-1" ng-hide="showComments" type="button" ng-click="revealComments()" ng-disabled="!newPost.id">Show comments</md-button>
+    <md-button class="md-raised md-accent md-hue-1" ng-show="showComments" type="button" ng-click="hideComments()" ng-disabled="!newPost.id">Hide comments</md-button>
+</md-content>
 <md-content layout="column" layout-gt-md="row" layout-padding>
     <md-content layout="column" flex>
         <h3>Markdown</h3>
@@ -40,7 +44,7 @@
             <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
         </form>
     </md-content>
-    <md-content layout="column" flex>
+    <md-content layout="column" flex ng-hide="showComments">
         <h3>Preview</h3>
         <h1>{{newPost.title}}</h1>
         <h6 ng-if="newPost.user">{{newPost.user.lastName}}, {{newPost.user.firstName}}</h6>
@@ -51,9 +55,38 @@
         <span flex></span>
         <md-button ng-if="newPost.slug" ng-href="/#/posts/{{newPost.slug}}">/posts/{{newPost.slug}}</md-button>
     </md-content>
+    <md-content layout="column" ng-show="showComments" flex>
+        <h3>Comments</h3>
+        <md-content layout="column" layout-padding>
+            <md-list>
+                <md-list-item ng-repeat="comment in comments" class="md-3-line" ng-click="allow($event, comment)">
+                    <img ng-if="comment.user.photo" ng-src="{{comment.user.photo}}" class="md-avatar" alt="{{comment.user.firstName}}">
+                    <img ng-if="!comment.user.photo" ng-src="http://www.placehold.it/300" class="md-avatar" alt="{{comment.user.firstName}}">
+                    <div class="md-list-item-text">
+                        <h3>{{comment.comment}}</h3>
+                        <h4>{{comment.user.firstName}} {{comment.user.firstName}} - {{comment.user.email}}</h4>
+                        <p ng-if="comment.allow">
+                            Allowed.
+                        </p>
+                        <p ng-if="!comment.allow">
+                            Not allowed.
+                        </p>
+                        <md-icon md-svg-icon="icons/menu.svg" ng-click="deleteComment($event, comment)" class="md-secondary"></md-icon>
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <md-input-container flex>
+                        <label>Comment</label>
+                        <textarea name="" id="" cols="30" rows="5" ng-model="newComment.comment"></textarea>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="addComment()">Add</md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-content>
 </md-content>
 <style>
-    img{
+    img {
         max-width: 100%;
     }
 </style>
