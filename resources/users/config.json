@@ -64,6 +64,38 @@
 			"required": false,
 			"id": "polls",
 			"order": 7
+		},
+		"socialAccount": {
+			"name": "socialAccount",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "socialAccount",
+			"order": 8
+		},
+		"socialAccountId": {
+			"name": "socialAccountId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "socialAccountId",
+			"order": 9
+		},
+		"profile": {
+			"name": "profile",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "profile",
+			"order": 10
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 11
 		}
 	}
 }

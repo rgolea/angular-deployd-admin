@@ -1,11 +1,9 @@
 var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url', 'hc.marked', 'slugifier']);
 
-app.value('BASE_URL', '');
+app.value('BASE_URL', 'http://localhost:2403');
 
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    
-    $locationProvider.html5Mode(true).hashPrefix('!');
-    
+app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -18,14 +16,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             url: '/dashboard',
             templateUrl: '/dist/app/dashboard.html',
             abstract: true,
-            data: {
-                auth: true
-            },
             resolve: {
                 role: ['$q', 'Users', function ($q, Users) {
                     var defer = $q.defer();
                     Users.me(function (me) {
-                        if (me) {
+                        if (me.admin || me.main || me.posts || me.polls) {
                             defer.resolve(200);
                         } else {
                             defer.reject(403);
@@ -38,14 +33,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
         }).state('dashboard.intro', {
             url: '/intro',
             templateUrl: '/dist/app/dashboard.intro.html',
-            data: {
-                auth: true
-            },
             resolve: {
                 role: ['$q', 'Users', function ($q, Users) {
                     var defer = $q.defer();
                     Users.me(function (me) {
-                        if (me) {
+                        if (me.admin || me.main || me.posts || me.polls) {
                             defer.resolve(200);
                         } else {
                             defer.reject(403);
@@ -61,13 +53,17 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, Users, $state, $mdToast) {
 
     if (sessionStorage.authenticated) {
-        $rootScope.me = Users.me();
+        Users.me(function (me) {
+            $rootScope.me = me;
+        });
     } else {
         $rootScope.$broadcast('user:logout');
     }
 
     $rootScope.$on('user:login', function () {
-        $rootScope.me = Users.me();
+        Users.me(function (me) {
+            $rootScope.me = me;
+        });
         sessionStorage.setItem('authenticated', $rootScope.me);
     });
 
@@ -79,13 +75,13 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
     });
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        if (toState.authenticate == true && $rootScope.me == undefined) {
-            $state.go('login');
-        };
+
+        Users.me(function (me) {
+            $rootScope.me = me;
+        });
     });
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-
         if (error === 403) {
             $mdToast.show(
                 $mdToast.simple()
@@ -101,12 +97,6 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
             );
         }
 
-        if ($rootScope.me == undefined) {
-            $state.go('login');
-        } else {
-            $state.go('dashboard.intro');
-        }
-
-
+        $state.go('login');
     });
 }]);

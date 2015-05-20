@@ -4,9 +4,6 @@ app.config(['$stateProvider', function ($stateProvider) {
             url: '/users',
             templateUrl: '/dist/app/users/partials/dashboard.users.html',
             controller: 'usersCtrl',
-            data: {
-                auth: true,
-            },
             resolve: {
                 role: ['$q', 'Users', function ($q, Users) {
                     var defer = $q.defer();

@@ -8,12 +8,21 @@
         <section flex>
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="edit(user)">
-                    <img ng-if="!user.photo" ng-src="http://www.placehold.it/300x300" class="md-avatar" />
                     <img ng-if="user.photo" ng-src="{{user.photo}}" class="md-avatar" />
-                    <div class="md-list-item-text">
+                    <img ng-if="user.socialAccount && user.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{user.profile.id}}/picture?width=300&height=300" class="md-avatar" />
+                    <img ng-if="user.socialAccount && user.socialAccount == 'google'" ng-src="{{user.profile._json.picture}}" class="md-avatar" />
+                    <img ng-if="user.socialAccount && user.socialAccount == 'twitter'" ng-src="{{user.profile._json.profile_image_url_https}}" class="md-avatar" />
+                    <img ng-if="!user.photo && !user.socialAccount" ng-src="http://www.placehold.it/300x300" class="md-avatar" />
+
+                    <div class="md-list-item-text" ng-if="!user.socialAccount">
                         <h3>{{user.lastName}}, {{user.firstName}}</h3>
                         <h4>Username: {{user.username}}</h4>
                         <p>{{user.email}}</p>
+                    </div>
+                    <div class="md-list-item-text" ng-if="user.socialAccount">
+                        <h3>{{user.profile.displayName}}</h3>
+                        <h4>{{user.socialAccount}}</h4>
+                        <p ng-if="user.socialAccount == 'google'">{{user.profile._json.email}}</p>
                     </div>
                     <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, user)" class="md-secondary"></md-icon>
                 </md-list-item>
@@ -21,36 +30,39 @@
         </section>
         <section flex ng-show="showForm">
             <md-content layout="column" layout-align="space-around center" layout-padding>
-                <md-button>
+                <md-button ng-if="!newUser.socialAccount">
                     <label for="file-input" flex>Upload photo</label>
                     <md-tooltip>
                         Please use aspect ratio 1:1
                     </md-tooltip>
                 </md-button>
-                <input type="file" id="file-input" ng-model="newUser.photo" ng-file accept="image/png,image/jpeg" ng-format="image/png" ng-max-width="300" ng-max-height="300" style="display:none;" />
+                <input type="file" id="file-input" ng-model="newUser.photo" ng-file accept="image/png,image/jpeg" ng-format="image/png" ng-max-width="300" ng-max-height="300" style="display:none;" ng-if="!newUser.socialAccount" />
                 <center>
-                    <img ng-hide="newUser.photo" ng-src="http://www.placehold.it/300x300" style="width:100px; height:100px; border-radius:50px;" />
+                    <img ng-hide="newUser.photo || newUser.socialAccount" ng-src="http://www.placehold.it/300x300" style="width:100px; height:100px; border-radius:50px;" />
                     <img ng-show="newUser.photo" ng-src="{{newUser.photo}}" style="width:100px; height:100px; border-radius:50px;" />
+                    <img ng-show="newUser.socialAccount && newUser.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{newUser.profile.id}}/picture?width=300&height=300" style="width:100px; height:100px; border-radius:50px;" />
+                    <img ng-show="newUser.socialAccount && newUser.socialAccount == 'google'" ng-src="{{newUser.profile._json.picture}}" style="width:100px; height:100px; border-radius:50px;" />
+                    <img ng-show="newUser.socialAccount && newUser.socialAccount == 'twitter'" ng-src="{{newUser.profile._json.profile_image_url_https}}" style="width:100px; height:100px; border-radius:50px;" />
                 </center>
                 <br>
                 <form ng-submit="save()" style="min-width:100%;">
-                    <md-input-container flex>
+                    <md-input-container flex ng-if="!newUser.socialAccount">
                         <label>Username</label>
                         <input type="text" ng-model="newUser.username" autocomplete="off">
                     </md-input-container>
-                    <md-input-container>
+                    <md-input-container ng-if="!newUser.socialAccount">
                         <label>First name</label>
                         <input type="text" ng-model="newUser.firstName" autocomplete="off">
                     </md-input-container>
-                    <md-input-container>
+                    <md-input-container ng-if="!newUser.socialAccount">
                         <label>Last name</label>
                         <input type="text" ng-model="newUser.lastName" autocomplete="off">
                     </md-input-container>
-                    <md-input-container>
+                    <md-input-container ng-if="!newUser.socialAccount">
                         <label>Email</label>
                         <input type="email" ng-model="newUser.email" autocomplete="off">
                     </md-input-container>
-                    <md-input-container>
+                    <md-input-container ng-if="!newUser.socialAccount">
                         <label>Password</label>
                         <input type="password" ng-model="newUser.password" autocomplete="off">
                     </md-input-container>

@@ -1,4 +1,4 @@
-app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeout', '$mdDialog', '$mdToast', function ($scope, Users, $state, $rootScope, $timeout, $mdDialog, $mdToast) {
+app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeout', '$mdDialog', '$mdToast', 'BASE_URL', function ($scope, Users, $state, $rootScope, $timeout, $mdDialog, $mdToast, BASE_URL) {
 
     //    Setting up
     $scope.newUser = new Users();
@@ -6,6 +6,10 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
 
     //    Save form
 
+    $scope.socialLogin = function(provider){
+        window.location.href = '/auth/' + provider + '?redirectURL=http://localhost:2403';
+    };
+    
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
         $scope.newUser.$save().then(function (success) {
@@ -38,11 +42,14 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
         $scope.newUser = new Users();
     };
 
+    $scope.afterLogged = function () {
+            $state.go('dashboard.intro'); 
+    };
+
     //    Log in user
 
     $scope.login = function () {
         $scope.newUser.$login().then(function (success) {
-            $state.go('dashboard.intro');
             $rootScope.$broadcast('user:login');
         }, function (err) {
             if (err.status == 401) {
