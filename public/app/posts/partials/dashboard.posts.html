@@ -61,8 +61,11 @@
             <md-list>
                 <md-list-item ng-repeat="comment in comments" class="md-3-line" ng-click="allow($event, comment)">
                     <img ng-if="comment.user.photo" ng-src="{{comment.user.photo}}" class="md-avatar" alt="{{comment.user.firstName}}">
-                    <img ng-if="!comment.user.photo" ng-src="http://www.placehold.it/300" class="md-avatar" alt="{{comment.user.firstName}}">
-                    <div class="md-list-item-text">
+                    <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{comment.user.profile.id}}/picture?width=300&height=300" class="md-avatar" />
+                    <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'google'" ng-src="{{comment.user.profile._json.picture}}" class="md-avatar" />
+                    <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'twitter'" ng-src="{{comment.user.profile._json.profile_image_url_https}}" class="md-avatar" />
+                    <img ng-if="!comment.user.photo && !comment.user.socialAccount" ng-src="http://www.placehold.it/300" class="md-avatar" alt="{{comment.user.firstName}}">
+                    <div class="md-list-item-text" ng-if="!comment.user.socialAccount">
                         <h3>{{comment.comment}}</h3>
                         <h4>{{comment.user.firstName}} {{comment.user.firstName}} - {{comment.user.email}}</h4>
                         <p ng-if="comment.allow">
@@ -71,8 +74,18 @@
                         <p ng-if="!comment.allow">
                             Not allowed.
                         </p>
-                        <md-icon md-svg-icon="icons/menu.svg" ng-click="deleteComment($event, comment)" class="md-secondary"></md-icon>
                     </div>
+                    <div class="md-list-item-text" ng-if="comment.user.socialAccount">
+                        <h3>{{comment.comment}}</h3>
+                        <h4>{{comment.user.profile.displayName}}</h4>
+                        <p ng-if="comment.allow">
+                            Allowed.
+                        </p>
+                        <p ng-if="!comment.allow">
+                            Not allowed.
+                        </p>
+                    </div>
+                    <md-icon md-svg-icon="icons/menu.svg" ng-click="deleteComment($event, comment)" class="md-secondary"></md-icon>
                 </md-list-item>
                 <md-list-item>
                     <md-input-container flex>
