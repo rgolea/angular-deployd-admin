@@ -1,6 +1,6 @@
 # angular-deployd-admin
 ---
-This is an Angular.js & Deployd admin system. It's been maintained by [@rgolea](https://github.com/rgolea) and [@vaesergio](https://github.com/vaesergio).
+This is an Angular.js & Deployd admin system. It's been maintained by [@rgolea](https://github.com/rgolea), [@andreialecu](https://github.com/andreialecu) and [@vaesergio](https://github.com/vaesergio).
 
 ---
 ###Download
@@ -52,7 +52,7 @@ grunt watch
 ---
 ###Running the app
 
-You can run the app by starting mongodb and the entire app.
+You can run the app by starting mongodb and the entire app. After that, open your browser and go to [http://localhost:2403/dashboard](http://localhost:2403/dashboard). Go to the users collection and add an admin user.
 
 MongoDB:
 ```
@@ -63,6 +63,5 @@ Application:
 ```
 npm start
 ```
-
 ---
 ####Thank you

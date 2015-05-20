@@ -1,5 +1,5 @@
 app.factory('Users', ['$resource', 'BASE_URL', function ($resource, BASE_URL) {
-    return $resource(BASE_URL + '/users', {
+    return $resource(BASE_URL + '/users/:id', {
         id: "@id"
     }, {
         login: {

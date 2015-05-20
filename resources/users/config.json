@@ -24,6 +24,78 @@
 			"required": false,
 			"id": "email",
 			"order": 2
+		},
+		"photo": {
+			"name": "photo",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "photo",
+			"order": 3
+		},
+		"admin": {
+			"name": "admin",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "admin",
+			"order": 4
+		},
+		"main": {
+			"name": "main",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "main",
+			"order": 5
+		},
+		"posts": {
+			"name": "posts",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "posts",
+			"order": 6
+		},
+		"polls": {
+			"name": "polls",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "polls",
+			"order": 7
+		},
+		"socialAccount": {
+			"name": "socialAccount",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "socialAccount",
+			"order": 8
+		},
+		"socialAccountId": {
+			"name": "socialAccountId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "socialAccountId",
+			"order": 9
+		},
+		"profile": {
+			"name": "profile",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "profile",
+			"order": 10
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 11
 		}
 	}
 }

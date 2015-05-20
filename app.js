@@ -4,7 +4,7 @@ var deployd = require('deployd');
 // configure database etc. 
 var server = deployd({
   port: process.env.PORT || 2403,
-  env: 'development',
+  env: process.env.ENV || 'development',
   db: {
     connectionString: 'mongodb://localhost:27017/interface'
   }
