@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "deployd": "^0.8.2",
-    "dpd-passport": "^0.3.0"
+    "dpd-passport": "git://github.com/rgolea/dpd-passport.git#master"
   }
 }

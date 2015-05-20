@@ -6,9 +6,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
 
     //    Save form
 
-    $scope.socialLogin = function(provider){
-        window.location.href = '/auth/' + provider + '?redirectURL=http://localhost:2403';
-    };
+    $scope.redirectURL = BASE_URL;
     
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
