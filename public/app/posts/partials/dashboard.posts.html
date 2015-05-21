@@ -4,7 +4,9 @@
     </md-toolbar>
     <md-content>
         <md-list>
-            <md-list-item ng-hide="posts.length">No posts.</md-list-item>
+            <p layout-padding ng-hide="posts.length">
+                No posts.
+            </p>
             <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created'" ng-click="show(post)">{{post.title}}
                 <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, post)" class="md-secondary"></md-icon>
             </md-list-item>
@@ -48,7 +50,8 @@
         <h3>Preview</h3>
         <h1>{{newPost.title}}</h1>
         <h6 ng-if="newPost.user">{{newPost.user.lastName}}, {{newPost.user.firstName}}</h6>
-        <h6 ng-if="!newPost.user && newPost.title">{{me.lastName}}, {{me.firstName}}</h6>
+        <h6 ng-if="!newPost.user && newPost.title && !me.socialAccount">{{me.lastName}}, {{me.firstName}}</h6>
+        <h6 ng-if="!newPost.user && newPost.title && me.socialAccount">{{me.profile.displayName}} - {{me.socialAccount}}</h6>
         <center>
             <md-content layout="column" marked="newPost.content"></md-content>
         </center>

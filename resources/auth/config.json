@@ -2,8 +2,8 @@
 	"type": "AuthResource",
 	"usersCollection": "",
 	"SALT_LEN": "",
-	"baseURL": "http://localhost:2403/",
-	"allowedRedirectURLs": "^http://localhost:2403.*$",
+	"baseURL": "http://192.168.1.44:2403/",
+	"allowedRedirectURLs": "^*$",
 	"disableSessionId": true,
 	"allowLocal": false,
 	"allowTwitter": true,
@@ -20,5 +20,6 @@
 	"githubScope": "",
 	"googleClientId": "969947765116-js5h5236kr8qvkgt9camn564mi96ajku.apps.googleusercontent.com",
 	"googleClientSecret": "uzhOOSYdo-2L4AqhOnP0NRl2",
-	"googleScope": ""
+	"googleScope": "",
+	"returnParams": false
 }

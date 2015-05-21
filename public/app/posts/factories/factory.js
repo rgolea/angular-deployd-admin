@@ -1,11 +1,11 @@
-app.factory('Posts', ['$resource', 'BASE_URL', function ($resource, BASE_URL) {
-    return $resource(BASE_URL + '/posts/:id', {
+app.factory('Posts', ['$resource', 'SERVER_URL', function ($resource, SERVER_URL) {
+    return $resource(SERVER_URL + '/posts/:id', {
         id: "@id"
     });
 }]);
 
-app.factory('Comments', ['$resource', 'BASE_URL', function ($resource, BASE_URL) {
-    return $resource(BASE_URL + '/comments/:id', {
+app.factory('Comments', ['$resource', 'SERVER_URL', function ($resource, SERVER_URL) {
+    return $resource(SERVER_URL + '/comments/:id', {
         id: "@id"
     });
 }]);
