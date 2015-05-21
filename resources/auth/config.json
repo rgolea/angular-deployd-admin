@@ -4,7 +4,7 @@
 	"SALT_LEN": "",
 	"baseURL": "http://localhost:2403/",
 	"allowedRedirectURLs": "^http://localhost:2403.*$",
-	"disableSessionId": true,
+	"disableSessionId": false,
 	"allowLocal": false,
 	"allowTwitter": true,
 	"allowFacebook": true,

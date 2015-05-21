@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "deployd": "^0.8.2",
+    "dpd-fileupload": "git@github.com:NicolasRitouet/dpd-fileupload.git#master",
     "dpd-passport": "git://github.com/rgolea/dpd-passport.git#master"
   }
 }

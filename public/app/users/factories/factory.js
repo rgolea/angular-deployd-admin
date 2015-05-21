@@ -1,18 +1,18 @@
-app.factory('Users', ['$resource', 'BASE_URL', function ($resource, BASE_URL) {
-    return $resource(BASE_URL + '/users/:id', {
+app.factory('Users', ['$resource', 'SERVER_URL', function ($resource, SERVER_URL) {
+    return $resource(SERVER_URL + '/users/:id', {
         id: "@id"
     }, {
         login: {
             method: 'POST',
-            url: BASE_URL + '/users/login'
+            url: SERVER_URL + '/users/login'
         },
         logout: {
             method: 'GET',
-            url: BASE_URL + '/users/logout'
+            url: SERVER_URL + '/users/logout'
         },
         me: {
             method: 'GET',
-            url: BASE_URL + '/users/me'
+            url: SERVER_URL + '/users/me'
         }
     });
 }]);
