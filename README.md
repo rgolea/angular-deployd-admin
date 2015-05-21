@@ -59,9 +59,14 @@ MongoDB:
 mongod 
 ```
 
-Application:
+Application in production:
 ```
 npm start
+```
+
+Application in development:
+```
+npm run dev
 ```
 ---
 ####Thank you
