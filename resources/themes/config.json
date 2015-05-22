@@ -1,0 +1,149 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"fifty": {
+			"name": "fifty",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "fifty",
+			"order": 1
+		},
+		"oneHundred": {
+			"name": "oneHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "oneHundred",
+			"order": 2
+		},
+		"twoHundred": {
+			"name": "twoHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "twoHundred",
+			"order": 3
+		},
+		"threeHundred": {
+			"name": "threeHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "threeHundred",
+			"order": 4
+		},
+		"fourHundred": {
+			"name": "fourHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "fourHundred",
+			"order": 5
+		},
+		"fiveHundred": {
+			"name": "fiveHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "fiveHundred",
+			"order": 6
+		},
+		"sixHundred": {
+			"name": "sixHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "sixHundred",
+			"order": 7
+		},
+		"sevenHundred": {
+			"name": "sevenHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "sevenHundred",
+			"order": 8
+		},
+		"eightHundred": {
+			"name": "eightHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "eightHundred",
+			"order": 9
+		},
+		"nineHundred": {
+			"name": "nineHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "nineHundred",
+			"order": 10
+		},
+		"aOneHundred": {
+			"name": "aOneHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "aOneHundred",
+			"order": 11
+		},
+		"aTwoHundred": {
+			"name": "aTwoHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "aTwoHundred",
+			"order": 12
+		},
+		"aFourHundred": {
+			"name": "aFourHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "aFourHundred",
+			"order": 13
+		},
+		"aSevenHundred": {
+			"name": "aSevenHundred",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "aSevenHundred",
+			"order": 14
+		},
+		"contrastDefaultColor": {
+			"name": "contrastDefaultColor",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "contrastDefaultColor",
+			"order": 15
+		},
+		"contrastLightColors": {
+			"name": "contrastLightColors",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "contrastLightColors",
+			"order": 16
+		},
+		"contrastDarkColors": {
+			"name": "contrastDarkColors",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "contrastDarkColors",
+			"order": 17
+		}
+	}
+}

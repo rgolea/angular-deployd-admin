@@ -1,0 +1,82 @@
+<md-button ng-href="http://www.google.com/design/spec/style/color.html#color-color-palette" target="_blank" class="md-accent">View themes</md-button>
+<md-content layout="column" layout-padding layout-gt-md="row">
+    <!--    List of Themes     -->
+    <md-content flex>
+        <md-list>
+            <md-list-item ng-repeat="theme in themes" ng-click="open(theme)">
+                <md-icon md-svg-icon="/icons/fi-paint-bucket.svg" ng-style="{'color': '#'+theme.fiveHundred}"></md-icon>
+                <p ng-style="{'color': '#'+theme.fiveHundred}" class="md-list-item-text">
+                    {{theme.name}}
+                </p>
+                <md-icon ng-style="{'color': '#'+theme.fiveHundred}" class="md-secondary" ng-click="delete($event, theme)" aria-label="Delete theme" md-svg-icon="/icons/fi-trash.svg"></md-icon>
+            </md-list-item>
+        </md-list>
+    </md-content>
+    <!--    Add Themes     -->
+    <md-content flex>
+        <form ng-submit="save()">
+            <md-input-container>
+                <label>Name*</label>
+                <input type="text" ng-model="newTheme.name" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>50</label>
+                <input type="text" ng-model="newTheme.fifty" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>100</label>
+                <input type="text" ng-model="newTheme.oneHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>200</label>
+                <input type="text" ng-model="newTheme.twoHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>300</label>
+                <input type="text" ng-model="newTheme.threeHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>400</label>
+                <input type="text" ng-model="newTheme.fourHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>500*</label>
+                <input type="text" ng-model="newTheme.fiveHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>600</label>
+                <input type="text" ng-model="newTheme.sixHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>700</label>
+                <input type="text" ng-model="newTheme.sevenHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>800</label>
+                <input type="text" ng-model="newTheme.eightHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>900</label>
+                <input type="text" ng-model="newTheme.nineHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>A100</label>
+                <input type="text" ng-model="newTheme.aOneHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>A200</label>
+                <input type="text" ng-model="newTheme.aTwoHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>A400</label>
+                <input type="text" ng-model="newTheme.aFourHundred" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>A700</label>
+                <input type="text" ng-model="newTheme.aSevenHundred" autocomplete="off">
+            </md-input-container>
+            <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+            <md-button type="button" ng-click="reset()" class="md-raised">Reset</md-button>
+        </form>
+    </md-content>
+</md-content>

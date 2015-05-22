@@ -1,8 +1,7 @@
-<md-subheader>
-    <h1>Users</h1>
+<md-content layout="row">
     <md-button ng-click="add()" class="md-primary">Add</md-button>
     <md-button ng-click="hide()" ng-show="showForm">Hide</md-button>
-</md-subheader>
+</md-content>
 <md-content>
     <md-content layout="column" layout-padding layout-gt-md="row">
         <section flex>
@@ -47,8 +46,8 @@
                 <br>
                 <form ng-submit="save()" style="min-width:100%;">
                     <md-input-container flex ng-if="!newUser.socialAccount">
-                        <label>Username</label>
-                        <input type="text" ng-model="newUser.username" autocomplete="off">
+                        <label>Username*</label>
+                        <input type="text" ng-model="newUser.username" autocomplete="off" required>
                     </md-input-container>
                     <md-input-container ng-if="!newUser.socialAccount">
                         <label>First name</label>
@@ -63,8 +62,8 @@
                         <input type="email" ng-model="newUser.email" autocomplete="off">
                     </md-input-container>
                     <md-input-container ng-if="!newUser.socialAccount">
-                        <label>Password</label>
-                        <input type="password" ng-model="newUser.password" autocomplete="off">
+                        <label>Password*</label>
+                        <input type="password" ng-model="newUser.password" autocomplete="off" required>
                     </md-input-container>
                     <md-container layout="row">
                         <md-container layout="column" layout-align="space-around start" flex="50">
