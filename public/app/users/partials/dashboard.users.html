@@ -7,7 +7,7 @@
     <md-content layout="column" layout-padding layout-gt-md="row">
         <section flex>
             <md-list>
-                <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="edit(user)">
+                <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="edit(user)" aria-label="Edit user">
                     <img ng-if="user.photo" ng-src="{{user.photo}}" class="md-avatar" />
                     <img ng-if="user.socialAccount && user.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{user.profile.id}}/picture?width=300&height=300" class="md-avatar" />
                     <img ng-if="user.socialAccount && user.socialAccount == 'google'" ng-src="{{user.profile._json.picture}}" class="md-avatar" />
@@ -24,7 +24,7 @@
                         <h4>{{user.socialAccount}}</h4>
                         <p ng-if="user.socialAccount == 'google'">{{user.profile._json.email}}</p>
                     </div>
-                    <md-icon md-svg-icon="icons/menu.svg" ng-click="delete($event, user)" class="md-secondary"></md-icon>
+                    <md-icon md-svg-icon="icons/fi-trash.svg" ng-click="delete($event, user)" class="md-secondary" aria-label="Delete user"></md-icon>
                 </md-list-item>
             </md-list>
         </section>
