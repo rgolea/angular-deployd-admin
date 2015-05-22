@@ -1,75 +1,18 @@
-app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $mdThemingProvider) {
+//app.constant('PALETTES', ['red', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey']);
 
-    $mdThemingProvider.theme('red_pink')
-        .primaryPalette('red')
-        .accentPalette('pink');
+app.constant('PALETTES', ['red', 'blue', 'blue-grey']);
 
-    $mdThemingProvider.theme('red_purple')
-        .primaryPalette('red')
-        .accentPalette('purple');
+app.config(['$stateProvider', '$mdThemingProvider', 'PALETTES', function ($stateProvider, $mdThemingProvider, PALETTES) {
 
-    $mdThemingProvider.theme('red_deep-purple')
-        .primaryPalette('red')
-        .accentPalette('deep-purple');
-
-    $mdThemingProvider.theme('red_indigo')
-        .primaryPalette('red')
-        .accentPalette('indigo');
-
-    $mdThemingProvider.theme('red_blue')
-        .primaryPalette('red')
-        .accentPalette('blue');
-
-    $mdThemingProvider.theme('red_light-blue')
-        .primaryPalette('red')
-        .accentPalette('light-blue');
-
-    $mdThemingProvider.theme('red_cyan')
-        .primaryPalette('red')
-        .accentPalette('cyan');
-
-    $mdThemingProvider.theme('red_teal')
-        .primaryPalette('red')
-        .accentPalette('teal');
-
-    $mdThemingProvider.theme('red_green')
-        .primaryPalette('red')
-        .accentPalette('green');
-
-    $mdThemingProvider.theme('red_light-green')
-        .primaryPalette('red')
-        .accentPalette('light-green');
-
-    $mdThemingProvider.theme('red_lime')
-        .primaryPalette('red')
-        .accentPalette('lime');
-
-    $mdThemingProvider.theme('red_yellow')
-        .primaryPalette('red')
-        .accentPalette('yellow');
-    $mdThemingProvider.theme('red_amber')
-        .primaryPalette('red')
-        .accentPalette('amber');
-
-    $mdThemingProvider.theme('red_orange')
-        .primaryPalette('red')
-        .accentPalette('orange');
-
-    $mdThemingProvider.theme('red_deep-orange')
-        .primaryPalette('red')
-        .accentPalette('deep-orange');
-
-    $mdThemingProvider.theme('red_brown')
-        .primaryPalette('red')
-        .accentPalette('brown');
-
-    $mdThemingProvider.theme('red_grey')
-        .primaryPalette('red')
-        .accentPalette('grey');
-
-    $mdThemingProvider.theme('red_blue-grey')
-        .primaryPalette('red')
-        .accentPalette('blue-grey');
+    PALETTES.forEach(function (primary, i) {
+        PALETTES.forEach(function (accent, j) {
+            if (i !== j) {
+                $mdThemingProvider.theme(primary + '_' +accent)
+                    .primaryPalette(primary)
+                    .accentPalette(accent);
+            }
+        });
+    });
 
 
     $stateProvider

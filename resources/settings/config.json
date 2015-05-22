@@ -25,13 +25,21 @@
 			"id": "active",
 			"order": 2
 		},
-		"theme": {
-			"name": "theme",
+		"primary": {
+			"name": "primary",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
-			"id": "theme",
+			"required": true,
+			"id": "primary",
 			"order": 3
+		},
+		"accent": {
+			"name": "accent",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "accent",
+			"order": 4
 		}
 	}
 }
