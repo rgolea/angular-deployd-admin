@@ -22,6 +22,10 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
 
         $scope.newSetting.$save().then(function (success) {
             
+            if(success.active){
+                $rootScope.settings = success;
+            };
+            
             if (i >= 0) {
                 $scope.settings[i] = success;
             } else {

@@ -1,19 +1,20 @@
 //app.constant('PALETTES', ['red', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey']);
 
-app.constant('PALETTES', ['red', 'blue', 'blue-grey']);
+app.constant('PALETTES', ['red', 'blue', 'blue-grey', 'lime']);
 
 app.config(['$stateProvider', '$mdThemingProvider', 'PALETTES', function ($stateProvider, $mdThemingProvider, PALETTES) {
 
     PALETTES.forEach(function (primary, i) {
         PALETTES.forEach(function (accent, j) {
             if (i !== j) {
-                $mdThemingProvider.theme(primary + '_' +accent)
+                $mdThemingProvider.theme(primary + '_' + accent)
                     .primaryPalette(primary)
                     .accentPalette(accent);
             }
         });
     });
 
+    $mdThemingProvider.alwaysWatchTheme(true);
 
     $stateProvider
         .state('dashboard.settings', {
