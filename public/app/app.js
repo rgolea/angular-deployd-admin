@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url', 'hc.marked', 'slugifier', 'ngFileUpload', 'ngTouch']);
 
-if(document.baseURI === 'http://localhost:2403/') {
+if (document.baseURI === 'http://localhost:2403/') {
     app.value('SERVER_URL', 'http://localhost:2403');
 } else {
     app.value('SERVER_URL', 'http://192.168.1.44:2403');
