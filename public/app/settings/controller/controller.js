@@ -1,25 +1,6 @@
-app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', function ($scope, Settings, $mdToast, $mdDialog, $rootScope) {
+app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'PALETTES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, PALETTES) {
     
-    $scope.themes = [
-        {id: 'red_lime', name: 'Primary: Red, Accent: Lime'},
-        {id: 'red_yellow', name: 'Primary: Red, Accent: Yellow'},
-        {id: 'red_amber', name: 'Primary: Red, Accent: Amber'},
-        {id: 'red_orange', name: 'Primary: Red, Accent: Orange'},
-        {id: 'red_deep-orange', name: 'Primary: Red, Accent: Deep Orange'},
-        {id: 'red_brown', name: 'Primary: Red, Accent: Brown'},
-        {id: 'red_grey', name: 'Primary: Red, Accent: Grey'},
-        {id: 'red_pink', name: 'Primary: Red, Accent: Pink'},
-        {id: 'red_purple', name: 'Primary: Red, Accent: Purple'},
-        {id: 'red_deep-purple', name: 'Primary: Red, Accent: Deep Purple'},
-        {id: 'red_indigo', name: 'Primary: Red, Accent: Indigo'},
-        {id: 'red_blue', name: 'Primary: Red, Accent: Blue'},
-        {id: 'red_light-blue', name: 'Primary: Red, Accent: Light Blue'},
-        {id: 'red_cyan', name: 'Primary: Red, Accent: Cyan'},
-        {id: 'red_teal', name: 'Primary: Red, Accent: Teal'},
-        {id: 'red_green', name: 'Primary: Red, Accent: Green'},
-        {id: 'red_light-green', name: 'Primary: Red, Accent: Light Green'},
-        {id: 'red_blue-grey', name: 'Primary: Red, Accent: Blue Grey'}
-    ];  
+    $scope.palettes = PALETTES;
         
     $scope.settings = Settings.query();
     $scope.newSetting = new Settings();
