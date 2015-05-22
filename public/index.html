@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <base href="/">
-    <title>Cardiom</title>
+    <title ng-bind="settings.appName"></title>
     <link rel="stylesheet" href="dist/style.min.css">
 </head>
 
-<body>
+<body md-theme="{{settings.theme}}">
     <ui-view></ui-view>
     <script src="dpd.js"></script>
     <script src="dist/script.min.js"></script>

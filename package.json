@@ -1,6 +1,6 @@
 {
-  "name": "cardiom_interface",
-  "version": "1.0.2",
+  "name": "angular-deployd-admin",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
