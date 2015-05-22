@@ -31,6 +31,9 @@
             <md-select placeholder="Accent palette" ng-model="newSetting.accent" style="width:100%;">
                 <md-option ng-repeat="palette in palettes" value="{{palette}}">{{palette | uppercase}}</md-option>
             </md-select>
+            <md-select placeholder="Warn palette" ng-model="newSetting.warn" style="width:100%;">
+                <md-option ng-repeat="palette in palettes" value="{{palette}}">{{palette | uppercase}}</md-option>
+            </md-select>
             <md-switch ng-model="newSetting.active">Active</md-switch>
             <md-button type="submit" class="md-raised md-primary">Submit</md-button>
             <md-button type="button" ng-click="reset()" class="md-raised">Reset</md-button>
