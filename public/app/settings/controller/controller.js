@@ -1,6 +1,6 @@
-app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'PALETTES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, PALETTES) {
+app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'THEMES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, THEMES) {
     
-    $scope.palettes = PALETTES;
+    $scope.themes = THEMES;
         
     $scope.settings = Settings.query();
     $scope.newSetting = new Settings();

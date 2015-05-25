@@ -5,7 +5,7 @@
                 <md-icon md-svg-icon="/icons/fi-torsos.svg" aria-label="Login with social media"></md-icon>
             </md-button>
         </md-content>
-        <h3>Cardiomed</h3>
+        <h3 ng-bind="settings.appName"></h3>
         <form ng-submit="login()" ng-hide="socialMedia || me.id">
             <md-input-container flex>
                 <label>Username</label>

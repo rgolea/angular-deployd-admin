@@ -1,7 +1,7 @@
 <md-toolbar class="md-tall" layout="row" layout-align="start center">
     <div class="md-toolbar-tools">
         <h2>
-          <span>Cardiomed</span>
+          <span ng-bind="settings.appName"></span>
         </h2>
         <span flex></span>
         <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Close">
