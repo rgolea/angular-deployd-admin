@@ -26,6 +26,9 @@
                 Home
             </md-list-item>
             <md-divider></md-divider>
+            <md-list-item ng-click="state('dashboard.content')" ng-if="me.admin || me.main">
+                Content
+            </md-list-item>
             <md-list-item ng-click="state('dashboard.posts')" ng-if="me.admin || me.posts">
                 Posts
             </md-list-item>

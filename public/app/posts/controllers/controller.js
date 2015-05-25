@@ -24,7 +24,8 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
     };
 
     $scope.save = function () {
-        var i, j;
+        var i = -1; 
+        var j = 0;
         
         $scope.posts.forEach(function(post){
             if(post.id === $scope.newPost.id){
@@ -34,7 +35,7 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
         });
         
         $scope.newPost.$save().then(function (success) {
-            if (i > 0) {
+            if (i >= 0) {
                 $scope.posts[i] = success;
             } else {
                 $scope.posts.push(success);
