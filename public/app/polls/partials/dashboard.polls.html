@@ -1,0 +1,50 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z5" md-component-id="left">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Polls</h1>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <p layout-padding ng-hide="questions.length">
+                No questions.
+            </p>
+            <md-list-item ng-show="questions" ng-repeat="question in questions | orderBy:'-created'" aria-label="Show question" ng-click="show(question)">
+                {{question.question}}
+                <md-icon md-svg-icon="icons/fi-trash.svg" aria-label="Delete question" ng-click="delete($event, question)" class="md-secondary"></md-icon>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="toggle()" class="md-warn">
+                Close
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<md-button class="md-fab md-accent" ng-click="toggle()" aria-label="Show list of questions">
+    <md-icon md-svg-src="icons/fi-list.svg" style="width:20px; height:20px;"></md-icon>
+</md-button>
+<md-content layout="column" layout-gt-md="row" layout-padding>
+    <md-content layout="column" flex>
+        <h3>Question</h3>
+        <form ng-submit="save()">
+            <md-input-container>
+                <label>Question</label>
+                <input type="text" ng-model="newQuestion.question" ng-disabled="!me.admin && !me.polls && newQuestion.id">
+            </md-input-container>
+            <md-input-container ng-repeat="answer in newQuestion.answers">
+                <label>Answer</label>
+                <input type="text" ng-model="answer.text" ng-disabled="!me.admin && !me.polls && newQuestion.id">
+            </md-input-container>
+            <md-button class="md-accent md-raised" type="button" ng-click="addQuestion()">Add answer</md-button>
+            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+            <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
+        </form>
+    </md-content>
+    <md-content layout="column" flex>
+        <h1>{{newQuestion.title}}</h1>
+        <md-content layout="column" marked="newQuestion.content"></md-content>
+    </md-content>
+</md-content>
+<style>
+    img {
+        max-width: 100%;
+    }
+</style>

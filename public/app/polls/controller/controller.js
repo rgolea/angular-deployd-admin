@@ -1,37 +1,44 @@
-app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$mdDialog', function ($scope, Content, $mdSidenav, $mdToast, $mdDialog) {
+app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$mdDialog', function ($scope, Questions, $mdSidenav, $mdToast, $mdDialog) {
 
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
     
-    $scope.posts = Content.query();
+    $scope.questions = Questions.query();
     
-    $scope.newPost = new Content();
+    
+    $scope.newQuestion = new Questions();
+    $scope.newQuestion.answers = [];
 
-    $scope.reset = function () {
-        $scope.newPost = new Content();
+    $scope.addQuestion = function(){
+        $scope.newQuestion.answers.push({text: ''});
     };
     
-    $scope.show = function (post) {
-        $scope.newPost = post;
+    $scope.reset = function () {
+        $scope.newQuestion = new Questions();
+        $scope.newQuestion.answers = [];
+    };
+    
+    $scope.show = function (question) {
+        $scope.newQuestion = question;
     };
     
     $scope.save = function () {
         var i = -1; 
         var j = 0;
         
-        $scope.posts.forEach(function(post){
-            if(post.id === $scope.newPost.id){
+        $scope.questions.forEach(function(question){
+            if(question.id === $scope.newQuestion.id){
                 i = j;
             }
             j = j++;
         });
         
-        $scope.newPost.$save().then(function (success) {
+        $scope.newQuestion.$save().then(function (success) {
             if (i >= 0) {
-                $scope.posts[i] = success;
+                $scope.questions[i] = success;
             } else {
-                $scope.posts.push(success);
+                $scope.questions.push(success);
             };
 
             $mdToast.show(
@@ -58,20 +65,20 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
         });
     };
     
-    $scope.delete = function ($event, post) {
+    $scope.delete = function ($event, question) {
         $mdDialog.show(
             $mdDialog.confirm()
             .parent(angular.element(document.body))
             .title('Delete')
-            .content('Are you sure you want to delete this content?')
+            .content('Are you sure you want to delete this question?')
             .ariaLabel('Delete dialog')
             .ok('Delete')
             .cancel('Cancel')
             .targetEvent($event)
         ).then(function () {
-            post.$delete().then(function (success) {
-                var i = $scope.posts.indexOf(post);
-                $scope.posts.splice(i, 1);
+            question.$delete().then(function (success) {
+                var i = $scope.questions.indexOf(question);
+                $scope.questions.splice(i, 1);
                 $scope.reset();
                 
             }, function (err) {

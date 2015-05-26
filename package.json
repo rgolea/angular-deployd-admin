@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "deployd": "^0.8.2",
+    "dpd-email": "^0.1.0",
     "dpd-fileupload": "0.0.13",
     "dpd-passport": "git://github.com/rgolea/dpd-passport.git#master"
   }

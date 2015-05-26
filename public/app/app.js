@@ -5,6 +5,7 @@ if (document.baseURI === 'http://localhost:2403/') {
 } else {
     app.value('SERVER_URL', 'http://192.168.1.44:2403');
 };
+
 app.value('BASE_URL', document.baseURI);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

@@ -27,7 +27,7 @@ app.controller('photosCtrl', ['$scope', 'Upload', 'Photos', '$window', 'SERVER_U
             $mdDialog.confirm()
             .parent(angular.element(document.body))
             .title('Delete')
-            .content('Are you sure you want to delete this post?')
+            .content('Are you sure you want to delete this photo?')
             .ariaLabel('Delete dialog')
             .ok('Delete')
             .cancel('Cancel')

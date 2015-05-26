@@ -6,7 +6,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
 
     //    Save form
 
-    $scope.redirectURL = BASE_URL;
+    $scope.redirectURL = BASE_URL + '%23/dashboard/intro';
     
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
@@ -40,15 +40,12 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
         $scope.newUser = new Users();
     };
 
-    $scope.afterLogged = function () {
-            $state.go('dashboard.intro'); 
-    };
-
     //    Log in user
 
     $scope.login = function () {
         $scope.newUser.$login().then(function (success) {
             $rootScope.$broadcast('user:login');
+            $state.go('dashboard.intro'); 
         }, function (err) {
             if (err.status == 401) {
                 $mdToast.show(

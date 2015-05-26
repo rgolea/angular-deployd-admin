@@ -4,7 +4,7 @@
           <span ng-bind="settings.appName"></span>
         </h2>
         <span flex></span>
-        <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Close">
+        <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Show menu">
             <md-icon md-svg-icon="/icons/fi-thumbnails.svg" aria-label="Show menu"></md-icon>
         </md-button>
     </div>
@@ -12,8 +12,8 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
     <md-toolbar layout="row" layout-align="start center">
         <div class="md-toolbar-tools">
-            <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Close">
-                <md-icon md-svg-icon="/icons/fi-x.svg" style="width: 20px; height:20px;" aria-label="Close menu"></md-icon>
+            <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Close menu">
+                <md-icon md-svg-icon="/icons/fi-x.svg" style="width: 20px; height:20px;"></md-icon>
             </md-button>
             <h2>
           <span>Menu</span>
@@ -28,6 +28,9 @@
             <md-divider></md-divider>
             <md-list-item ng-click="state('dashboard.content')" ng-if="me.admin || me.main">
                 Content
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.polls')" ng-if="me.admin || me.polls">
+                Polls
             </md-list-item>
             <md-list-item ng-click="state('dashboard.posts')" ng-if="me.admin || me.posts">
                 Posts

@@ -1,12 +1,12 @@
 <md-content layout="column" layout-align="center center" style="min-height:100%; min-width:100%; height: 100%; background-repeat: no-repeat; background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));">
     <md-card layout style="padding:40px; width:30%; min-width:300px;">
         <md-content layout="row" layout-align="end center">
-            <md-button class="md-fab" ng-click="socialMedia = !socialMedia" ng-disabled="me.id">
-                <md-icon md-svg-icon="/icons/fi-torsos.svg" aria-label="Login with social media"></md-icon>
+            <md-button class="md-fab" ng-click="socialMedia = !socialMedia" aria-label="Login with social media">
+                <md-icon md-svg-icon="/icons/fi-torsos.svg"></md-icon>
             </md-button>
         </md-content>
         <h3 ng-bind="settings.appName"></h3>
-        <form ng-submit="login()" ng-hide="socialMedia || me.id">
+        <form ng-submit="login()" ng-hide="socialMedia">
             <md-input-container flex>
                 <label>Username</label>
                 <input ng-model="newUser.username" type="text" autofocus>
@@ -15,13 +15,10 @@
                 <label>Password</label>
                 <input type="password" ng-model="newUser.password">
             </md-input-container>
-            <md-button class="md-raised md-primary" type="submit">Login</md-button>
+            <md-button class="md-raised md-primary" ng-hide="me.id" type="submit">Login</md-button>
+            <md-button class="md-raised md-warn" type="button" ng-show="me.id" ng-click="logout()">Logout</md-button>
             <md-button class="md-raised" type="button" ng-click="reset()">Reset</md-button>
         </form>
-        <md-content ng-show="me.id" layout="column" flex>
-            <md-button flex type="button" class="md-raised md-primary" ng-click="afterLogged()">Enter</md-button>
-            <md-button flex type="button" class="md-raised md-warn" ng-click="logout()">Logout</md-button>
-        </md-content>
         <md-content ng-show="socialMedia" layout="column" layout-padding layout-align="center center">
             <md-button style="background-color:#3b5998; color:white; width:100%;" class="md-raised" ng-href="/auth/facebook/callback?redirectURL={{redirectURL}}">Facebook</md-button>
             <md-button style="background-color:#00aced; color:white; width:100%;" class="md-raised" ng-href="/auth/twitter/callback?redirectURL={{redirectURL}}">Twitter</md-button>

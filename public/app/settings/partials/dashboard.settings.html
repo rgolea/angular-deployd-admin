@@ -1,4 +1,4 @@
-<md-button ng-href="http://www.google.com/design/spec/style/color.html#color-ui-color-palette" target="_blank">View palettes</md-button>
+<!--<md-button ng-href="http://www.google.com/design/spec/style/color.html#color-ui-color-palette" target="_blank">View palettes</md-button>-->
 <md-content layout="column" layout-padding layout-gt-md="row">
     <!--    List of Settings     -->
     <md-content flex>
@@ -10,7 +10,7 @@
                     <p ng-if="setting.active">Active</p>
                     <p ng-if="!setting.active">Not active</p>
                 </div>
-                <md-icon class="md-secondary" ng-click="delete($event, setting)" aria-label="Delete setting" md-svg-icon="/icons/fi-trash.svg"></md-icon>
+                <md-icon class="md-secondary" ng-click="delete($event, setting)" aria-label="Delete this setting" md-svg-icon="/icons/fi-trash.svg"></md-icon>
             </md-list-item>
         </md-list>
     </md-content>

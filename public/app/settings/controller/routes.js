@@ -43,7 +43,7 @@ app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $m
 
 app.run(['$rootScope', 'Settings', function ($rootScope, Settings) {
 
-    Settings.query(function (settings) {
+    var search = Settings.query(function (settings) {
         settings.forEach(function (setting) {
             if (setting.active) {
                 $rootScope.settings = setting;
