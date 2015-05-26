@@ -6,3 +6,4 @@ data
 public/fonts
 npm-debug.log
 public/upload
+.DS_Store
