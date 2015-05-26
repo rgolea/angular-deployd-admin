@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         concat: {
-            js: {
+            bowerjs: {
                 src: [
                     './bower_components/angular/angular.js',
                     './bower_components/angular-animate/angular-animate.js',
@@ -14,28 +14,48 @@ module.exports = function (grunt) {
                     './bower_components/angular-file-data-url/src/fileDataUrl.js',
                     './bower_components/marked/lib/marked.js',
                     './bower_components/angular-marked/angular-marked.js',
-                    './bower_components/ng-file-upload/ng-file-upload-all.js',
+                    './bower_components/ng-file-upload/ng-file-upload-all.js'
+                ],
+                dest: './public/dist/bower.js'
+            },
+            scriptsjs: {
+                src: [
                     './public/app/**/*.js'
                 ],
                 dest: './public/dist/script.js'
             },
-            css: {
+            bowercss: {
                 src: [
-                    './bower_components/angular-material/angular-material.css',
+                    './bower_components/angular-material/angular-material.css'
+                ],
+                dest: './public/dist/bower.css'
+            },
+            customcss: {
+                src: [
                     './public/css/**/*.css'
                 ],
                 dest: './public/dist/style.css'
             }
         },
         uglify: {
-            js: {
+            bowerjs: {
+                files: {
+                    './public/dist/bower.min.js': './public/dist/bower.js'
+                }
+            },
+            scriptsjs: {
                 files: {
                     './public/dist/script.min.js': './public/dist/script.js'
                 }
             }
         },
         cssmin: {
-            css: {
+            bowercss: {
+                files: {
+                    './public/dist/bower.min.css': './public/dist/bower.css'
+                }
+            },
+            customcss: {
                 files: {
                     './public/dist/style.min.css': './public/dist/style.css'
                 }
@@ -44,11 +64,11 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ['./public/app/**/*.js'],
-                tasks: ['concat', 'uglify']
+                tasks: ['concat:scriptsjs', 'uglify:scriptsjs']
             },
             css: {
                 files: ['./public/css/**/*.css'],
-                tasks: ['concat', 'cssmin']
+                tasks: ['concat:customcss', 'cssmin:customcss']
             },
             html: {
                 files: ['./public/app/**/*.html'],
