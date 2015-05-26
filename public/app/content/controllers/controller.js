@@ -1,36 +1,38 @@
-app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'THEMES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, THEMES) {
+app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$mdDialog', function ($scope, Content, $mdSidenav, $mdToast, $mdDialog) {
+
+    $scope.toggle = function () {
+        $mdSidenav('left').toggle();
+    };
     
-    $scope.themes = THEMES;
-        
-    $scope.settings = Settings.query();
-    $scope.newSetting = new Settings();
+    $scope.posts = Content.query();
+    
+    $scope.newPost = new Content();
 
     $scope.reset = function () {
-        $scope.newSetting = new Settings();
+        $scope.newPost = new Content();
     };
-
+    
+    $scope.show = function (post) {
+        $scope.newPost = post;
+    };
+    
     $scope.save = function () {
         var i = -1; 
         var j = 0;
-
-        $scope.settings.forEach(function (setting) {
-            if (setting.id === $scope.newSetting.id) {
+        
+        $scope.posts.forEach(function(post){
+            if(post.id === $scope.newPost.id){
                 i = j;
             }
             j = j++;
         });
-
-        $scope.newSetting.$save().then(function (success) {
-            
-            if(success.active){
-                $rootScope.settings = success;
-            };
-            
+        
+        $scope.newPost.$save().then(function (success) {
             if (i >= 0) {
-                $scope.settings[i] = success;
+                $scope.posts[i] = success;
             } else {
-                $scope.settings.push(success);
-            }
+                $scope.posts.push(success);
+            };
 
             $mdToast.show(
                 $mdToast.simple()
@@ -55,23 +57,23 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
             }
         });
     };
-
-    $scope.delete = function ($event, setting) {
+    
+    $scope.delete = function ($event, post) {
         $mdDialog.show(
             $mdDialog.confirm()
             .parent(angular.element(document.body))
             .title('Delete')
-            .content('Are you sure you want to delete this setting?')
+            .content('Are you sure you want to delete this content?')
             .ariaLabel('Delete dialog')
             .ok('Delete')
             .cancel('Cancel')
             .targetEvent($event)
         ).then(function () {
-            setting.$delete().then(function (success) {
-                var i = $scope.settings.indexOf(setting);
-                $scope.settings.splice(i, 1);
+            post.$delete().then(function (success) {
+                var i = $scope.posts.indexOf(post);
+                $scope.posts.splice(i, 1);
                 $scope.reset();
-
+                
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {
@@ -90,9 +92,5 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
                 }
             });
         });
-    };
-
-    $scope.open = function (setting) {
-        $scope.newSetting = setting;
     };
 }]);

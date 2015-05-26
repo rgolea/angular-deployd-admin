@@ -1,25 +1,22 @@
-//app.constant('PALETTES', ['red', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey']);
+//Palletes = ['red', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey']
 
-app.constant('PALETTES', ['red', 'purple', 'deep-purple', 'indigo']);
+//Add to array themes registered
+app.constant('THEMES', ['default', 'red-brown']);
 
-app.config(['$stateProvider', '$mdThemingProvider', 'PALETTES', function ($stateProvider, $mdThemingProvider, PALETTES) {
+app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $mdThemingProvider) {
 
     $mdThemingProvider.alwaysWatchTheme(true);
 
+    //    Register Theme
+    //                    $mdThemingProvider.theme(themeName)
+    //                        .primaryPalette(primary)
+    //                        .accentPalette(accent)
+    //                        .warnPalette(warn);
 
-    PALETTES.forEach(function (primary, i) {
-        PALETTES.forEach(function (accent, j) {
-            PALETTES.forEach(function (warn, k) {
-                if (i !== j || j !== k || i !== k) {
-                    $mdThemingProvider.theme(primary + '_' + accent + '_' + warn)
-                        .primaryPalette(primary)
-                        .accentPalette(accent)
-                        .warnPalette(warn);
-                }
-
-            });
-        });
-    });
+    $mdThemingProvider.theme('red-brown')
+        .primaryPalette('red')
+        .accentPalette('brown')
+        .warnPalette('indigo');
 
 
     $stateProvider
@@ -45,7 +42,8 @@ app.config(['$stateProvider', '$mdThemingProvider', 'PALETTES', function ($state
 }]);
 
 app.run(['$rootScope', 'Settings', function ($rootScope, Settings) {
-    Settings.query(function (settings) {
+
+    var search = Settings.query(function (settings) {
         settings.forEach(function (setting) {
             if (setting.active) {
                 $rootScope.settings = setting;

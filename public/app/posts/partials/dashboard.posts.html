@@ -4,7 +4,7 @@
     </md-toolbar>
     <md-content>
         <md-list>
-            <p layout-padding ng-hide="posts.length">
+            <p layout-padding ng-hide="posts.length" aria-label="No posts">
                 No posts.
             </p>
             <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created'" aria-label="Show post" ng-click="show(post)">{{post.title}}
@@ -18,8 +18,8 @@
     </md-content>
 </md-sidenav>
 <md-content layout="row" layout-align="space-between center" layout-padding>
-    <md-button class="md-fab md-accent" ng-click="toggle()">
-        <md-icon md-svg-src="icons/fi-list.svg" aria-label="Show list of posts" style="width:20px; height:20px;"></md-icon>
+    <md-button class="md-fab md-accent" ng-click="toggle()" aria-label="Show list of posts">
+        <md-icon md-svg-src="icons/fi-list.svg" style="width:20px; height:20px;"></md-icon>
     </md-button>
     <md-button class="md-raised md-accent md-hue-1" ng-hide="showComments" type="button" ng-click="revealComments()" ng-disabled="!newPost.id">Show comments</md-button>
     <md-button class="md-raised md-accent md-hue-1" ng-show="showComments" type="button" ng-click="hideComments()" ng-disabled="!newPost.id">Hide comments</md-button>
