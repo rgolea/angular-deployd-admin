@@ -1,5 +1,7 @@
 # angular-deployd-admin
 ---
+
+[![Join the chat at https://gitter.im/rgolea/angular-deployd-admin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rgolea/angular-deployd-admin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This is an Angular.js & Deployd admin system. It's been maintained by [@rgolea](https://github.com/rgolea), [@andreialecu](https://github.com/andreialecu) and [@vaesergio](https://github.com/vaesergio).
 
 ---
