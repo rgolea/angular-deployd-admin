@@ -103,6 +103,16 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
             );
         }
 
-        $state.go('login');
+        Users.me(function (me) {
+            if (me.main || me.posts || me.polls) {
+                $state.go('dashboard.intro');
+            } else {
+                $state.go('login');
+            }
+        }, function(err){
+            $state.go('login');
+        });
+
+
     });
 }]);

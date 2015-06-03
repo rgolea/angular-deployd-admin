@@ -21,5 +21,6 @@
 	"googleClientId": "969947765116-js5h5236kr8qvkgt9camn564mi96ajku.apps.googleusercontent.com",
 	"googleClientSecret": "uzhOOSYdo-2L4AqhOnP0NRl2",
 	"googleScope": "",
-	"returnParams": false
+	"returnParams": false,
+	"disableReturnParams": true
 }

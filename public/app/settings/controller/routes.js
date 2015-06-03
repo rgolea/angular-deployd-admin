@@ -15,7 +15,7 @@ app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $m
 
     $mdThemingProvider.theme('red-brown')
         .primaryPalette('red')
-        .accentPalette('brown')
+        .accentPalette('purple')
         .warnPalette('indigo');
 
 

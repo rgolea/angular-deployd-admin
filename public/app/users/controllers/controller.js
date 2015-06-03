@@ -1,4 +1,4 @@
-app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeout', '$mdDialog', '$mdToast', 'BASE_URL', function ($scope, Users, $state, $rootScope, $timeout, $mdDialog, $mdToast, BASE_URL) {
+app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDialog', '$mdToast', 'BASE_URL', function ($scope, Users, $state, $rootScope, $mdDialog, $mdToast, BASE_URL) {
 
     //    Setting up
     $scope.newUser = new Users();

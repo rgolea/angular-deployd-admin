@@ -29,6 +29,9 @@
             <md-list-item ng-click="state('dashboard.content')" ng-if="me.admin || me.main">
                 Content
             </md-list-item>
+            <md-list-item ng-click="state('dashboard.members')" ng-if="me.admin || me.main">
+                Members
+            </md-list-item>
             <md-list-item ng-click="state('dashboard.polls')" ng-if="me.admin || me.polls">
                 Polls
             </md-list-item>
