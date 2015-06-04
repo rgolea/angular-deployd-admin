@@ -8,7 +8,9 @@ if (document.baseURI === 'http://localhost:2403/') {
 
 app.value('BASE_URL', document.baseURI);
 
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    
+    $locationProvider.hashPrefix('!');
 
     $urlRouterProvider.otherwise('/login');
 

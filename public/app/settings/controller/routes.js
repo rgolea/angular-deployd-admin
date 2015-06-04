@@ -1,7 +1,7 @@
 //Palletes = ['red', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey']
 
 //Add to array themes registered
-app.constant('THEMES', ['default', 'red-brown']);
+app.constant('THEMES', ['default', 'red-purple']);
 
 app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $mdThemingProvider) {
 
@@ -13,7 +13,7 @@ app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $m
     //                        .accentPalette(accent)
     //                        .warnPalette(warn);
 
-    $mdThemingProvider.theme('red-brown')
+    $mdThemingProvider.theme('red-purple')
         .primaryPalette('red')
         .accentPalette('purple')
         .warnPalette('indigo');
