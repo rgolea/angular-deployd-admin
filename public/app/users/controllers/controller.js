@@ -6,7 +6,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
 
     //    Save form
 
-    $scope.redirectURL = BASE_URL + '%23/dashboard/intro';
+    $scope.redirectURL = BASE_URL + '%23%21/dashboard/intro';
     
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
