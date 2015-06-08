@@ -41,6 +41,9 @@
             <md-list-item ng-click="state('dashboard.photos')" ng-if="me.admin || me.posts || me.main">
                 Photos
             </md-list-item>
+            <md-list-item ng-click="state('dashboard.services')" ng-if="me.admin || me.main">
+                Services
+            </md-list-item>
             <md-list-item ng-click="state('dashboard.settings')" ng-if="me.admin">
                 Settings
             </md-list-item>

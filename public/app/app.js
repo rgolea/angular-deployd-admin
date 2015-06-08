@@ -3,7 +3,7 @@ var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAri
 if (window.location.host === 'localhost:2403') {
     app.value('SERVER_URL', 'http://localhost:2403');
 } else {
-    app.value('SERVER_URL', 'http://192.168.1.44:2403');
+    app.value('SERVER_URL', 'http://192.168.1.40:2403');
 };
 
 app.value('BASE_URL', 'http://'+window.location.host);
@@ -98,9 +98,10 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
             );
 
         } else {
+            console.log(error);
             $mdToast.show(
                 $mdToast.simple()
-                .content(error)
+                .content('An error occured!')
                 .position('right bottom')
             );
         }
