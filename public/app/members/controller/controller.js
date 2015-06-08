@@ -35,7 +35,16 @@ app.controller('membersCtrl', ['$scope', 'Members', 'MembersCategory', '$mdToast
             j = j++;
         });
 
+        var fullCategory;
+
+        $scope.categories.forEach(function (category) {
+            if (category.id === $scope.newMember.category) {
+                fullCategory = category;
+            }
+        });
+
         $scope.newMember.$save().then(function (success) {
+            success.fullCategory = fullCategory;
             if (i >= 0) {
                 $scope.members[i] = success;
             } else {

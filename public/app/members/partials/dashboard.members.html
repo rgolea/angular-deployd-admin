@@ -5,10 +5,13 @@
                 <label>Search</label>
                 <input type="text" ng-model="searchMembers" ng-model-options="{ debounce: 500 }">
             </md-input-container>
-            <md-list-item ng-repeat="member in members | filter: searchMembers" ng-click="edit(member)" aria-label="Edit member">
+            <md-list-item ng-repeat="member in members | filter: searchMembers" ng-click="edit(member)" aria-label="Edit member" class="md-2-line">
                 <img ng-src="{{member.photo}}" class="md-avatar" alt="{{member.lastName}}, {{member.firstName}}" ng-if="member.photo" />
                 <img ng-src="http://placehold.it/300x300" class="md-avatar" alt="No picture" ng-if="!member.photo" />
-                <p>{{member.lastName}}, {{member.firstName}}</p>
+                <div class="md-list-item-text">    
+                    <h3>{{member.lastName}}, {{member.firstName}}</h3>
+                    <p>{{member.fullCategory.name}}</p>
+                </div>
                 <md-icon md-svg-icon="icons/fi-trash.svg" aria-label="Delete member" ng-click="delete($event, member)" class="md-secondary"></md-icon>
             </md-list-item>
         </md-content>
@@ -18,7 +21,7 @@
                     <md-button type="button" aria-label="Upload photo">
                         <label for="file-input">Upload</label>
                     </md-button>
-                    <input type="file" id="file-input" ng-model="newMember.photo" ng-file accept="image/png,image/jpeg" ng-format="image/png" ng-max-width="300" ng-max-height="300" style="display:none;" />
+                    <input type="file" id="file-input" ng-model="newMember.photo" ng-file accept="image/png,image/jpeg" ng-format="image/png" ng-max-width="500" ng-max-height="500" style="display:none;" />
                     <br>
                     <img src="http://www.placehold.it/300x300" style="width:100px; height:100px; border-radius:50px;" ng-if="!newMember.photo" />
                     <img ng-src="{{newMember.photo}}" style="width:100px; height:100px; border-radius:50px;" ng-if="newMember.photo" />
@@ -31,14 +34,9 @@
                     <label>Last name</label>
                     <input type="text" ng-model="newMember.lastName">
                 </md-input-container>
-                <md-chips ng-model="newMember.categories" md-autocomplete-snap md-require-match>
-                    <md-autocomplete md-search-text="searchText" md-items="category in categories" md-item-text="category.name" placeholder="Select category">
-                        <span md-highlight-text="searchText">{{category.name}}</span>
-                    </md-autocomplete>
-                    <md-chip-template>
-                        {{$chip.name}}
-                    </md-chip-template>
-                </md-chips>
+                <md-select ng-model="newMember.category" placeholder="Category" style="width:100%;" ng-disabled="!categories.length">
+                    <md-option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</md-option>
+                </md-select>
                 <md-button type="submit" class="md-primary">Submit</md-button>
                 <md-button type="button">Reset</md-button>
             </form>

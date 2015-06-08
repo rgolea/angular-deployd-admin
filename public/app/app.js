@@ -12,7 +12,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
     
     $locationProvider.hashPrefix('!');
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
         .state('login', {

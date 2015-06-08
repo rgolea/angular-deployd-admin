@@ -32,6 +32,10 @@
             <md-select placeholder="Theme" ng-model="newSetting.theme" style="width:100%;">
                 <md-option ng-repeat="theme in themes" value="{{theme}}">{{theme | uppercase}}</md-option>
             </md-select>
+            <md-input-container>
+                <label>Public description - ({{160 - newSetting.description.length}})</label>
+                <textarea ng-model="newSetting.description" cols="30" rows="4" ng-maxlength="160"></textarea>
+            </md-input-container>
             <md-switch ng-model="newSetting.active">Active</md-switch>
             <md-button type="submit" class="md-raised md-primary">Submit</md-button>
             <md-button type="button" ng-click="reset()" class="md-raised">Reset</md-button>
