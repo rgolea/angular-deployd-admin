@@ -1,0 +1,30 @@
+<div layout="row" style="min-height:100%;">
+    <menu></menu>
+    <md-content flex layout="column">
+        <md-toolbar style="position:fixed;">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" ng-click="toggle()" aria-label="Menu" hide-gt-md>
+                    <md-icon md-svg-icon="/icons/fi-thumbnails.svg"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <br>
+        <br>
+        <br>
+        <ui-view></ui-view>
+        <md-content layout-padding>
+            <h3>Vezi pagini</h3>
+        </md-content>
+        <md-content layout-padding style="padding-left:15%; padding-right:15%;">
+            <md-list>
+                <md-list-item ng-repeat="post in avPosts | filter:search" class="md-3-line" ng-click="goPost(post)">
+                    <div class="md-list-item-text">
+                        <h3>{{::post.title}}</h3>
+                        <h4>/#!/posts/{{::post.slug}}</h4>
+                        <p>{{::post.description}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-content>
+</div>

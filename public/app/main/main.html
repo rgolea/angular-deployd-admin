@@ -1,34 +1,5 @@
 <div layout="row" style="min-height:100%;">
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-        <md-toolbar style="height:230px;" layout="column" layout-align="end">
-            <center>
-                <div style="width:150px; height:150px; background-image: url(logo.png);
-        background-position: center;
-        background-size: cover;"></div>
-            </center>
-            <div class="md-toolbar-tools" layout="row" layout-align="center">
-                <h2>{{::settings.appName}}</h2>
-            </div>
-        </md-toolbar>
-        <md-list style="padding:0px;">
-            <md-input-container>
-                <label>Cautati in pagina</label>
-                <input type="text" ng-model="search">
-            </md-input-container>
-            <md-list-item ng-click="state('main')">
-                <p style="font-size:1.2em">Pagina principala</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item ng-click="state('login')">
-                <p style="font-size:1.2em">Zona privata</p>
-                <span flex></span>
-                <md-icon md-svg-icon="/icons/fi-key.svg"></md-icon>
-            </md-list-item>
-            <md-list-item ng-click="toggle()" hide-gt-md>
-                <p style="font-size:1.2em">Close menu</p>
-            </md-list-item>
-        </md-list>
-    </md-sidenav>
+    <menu></menu>
     <md-content flex layout="column">
         <md-toolbar style="position:fixed;">
             <div class="md-toolbar-tools">
@@ -40,7 +11,7 @@
         <br>
         <br>
         <br>
-        <md-content ng-show="currentStateName === 'main'">
+        <md-content>
             <!--        About     -->
             <center>
                 <h1>{{::aboutContent.title}}</h1>
@@ -57,7 +28,7 @@
             <md-content layout-padding>
                 <center>
                     <h1>Echipa medicala</h1>
-                    <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+                    <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
                         <md-grid-tile ng-repeat="member in members | filter:search | orderBy:'lastName'" md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-gutter="2em" md-gutter-gt-sm="1em" ng-style="{'background-image' : 'url(' + member.photo + ')'}" style="background-size: cover; background-position:center;">
                             <md-grid-tile-footer>
                                 <h3>{{::member.lastName}}, {{::member.firstName}} - {{::member.fullCategory.name}}</h3>
@@ -68,26 +39,59 @@
             </md-content>
             <!--            Laborator     -->
             <md-divider></md-divider>
-            <md-content layout-padding>
+            <md-content layout-padding style="padding-left: 15%; padding-right: 15%;">
                 <center>
                     <h1>Laborator</h1>
                 </center>
-                <md-content ng-repeat="category in serviceCategories | filter:search">
+                <md-content ng-repeat="category in serviceCategories | filter:search" layout-padding>
                     <h3>{{::category.name}}</h3>
-                        <md-list flex="80">
-                            <md-list-item ng-repeat="service in category.services | filter:search" class="md-2-line">
-                                <div class="md-list-item-text">
-                                    <h3>{{::service.name}}</h3>
-                                    <p>{{::service.days | number}} zile</p>
-                                    <span flex></span>
-                                    <p class="md-secondary">{{::service.price | currency:'RON'}}</p>
-                                </div>
-                            </md-list-item>
-                        </md-list>
+                    <md-list flex="80">
+                        <md-list-item ng-repeat="service in category.services | filter:search" class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h3>{{::service.name}}</h3>
+                                <p>{{::service.days | number}} zile</p>
+                                <span flex></span>
+                                <p class="md-secondary">{{::service.price | currency:'RON'}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
                 </md-content>
             </md-content>
             <md-divider></md-divider>
+            <md-content layout-padding id="polls">
+                <center>
+                    <h1>Chestionar</h1>
+                </center>
+                <md-content layout-padding>
+                    <md-content layout-padding ng-repeat="question in questions | filter:search">
+                        <form ng-submit="sendPoll()">
+                            <md-input-container>
+                                <label>Nume complet</label>
+                                <input type="text" ng-model="newPoll.fullName">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Telefon</label>
+                                <input type="text" ng-model="newPoll.tel">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Email</label>
+                                <input type="email" ng-model="newPoll.email">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Adresa</label>
+                                <textarea cols="30" rows="3" ng-model="newPoll.address"></textarea>
+                            </md-input-container>
+                            <h3>{{::$index+1}}. {{::question.question}}</h3>
+                            <md-radio-group ng-model="newPoll.answers[$index]">
+                                <md-radio-button ng-repeat="answer in question.answers" value="{{::question.question}}-{{::answer.text}}">{{::answer.text}}</md-radio-button>
+                            </md-radio-group>
+                            <md-button type="submit" class="md-primary">Trimiteti</md-button>
+                        </form>
+                    </md-content>
+                </md-content>
+            </md-content>
         </md-content>
-        <ui-router></ui-router>
+        <br>
+        <ui-view></ui-view>
     </md-content>
 </div>
