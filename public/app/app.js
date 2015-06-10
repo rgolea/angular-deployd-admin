@@ -1,16 +1,20 @@
-var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url', 'hc.marked', 'slugifier', 'ngFileUpload', 'ngTouch']);
+var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'file-data-url', 'hc.marked', 'slugifier', 'ngFileUpload', 'ngTouch', 'ngMap']);
 
-if (document.baseURI === 'http://localhost:2403/') {
+if (window.location.host === 'localhost:2403') {
     app.value('SERVER_URL', 'http://localhost:2403');
 } else {
-    app.value('SERVER_URL', 'http://192.168.1.44:2403');
+    app.value('SERVER_URL', 'http://192.168.1.40:2403');
 };
 
-app.value('BASE_URL', document.baseURI);
+app.value('DEFAULT_EMAIL', 'rgolea@gmail.com');
 
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.value('BASE_URL', 'http://' + window.location.host);
 
-    $urlRouterProvider.otherwise('/login');
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    $locationProvider.hashPrefix('!');
+
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
         .state('login', {
@@ -77,7 +81,11 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
         Users.logout();
         delete sessionStorage.authenticated;
         delete $rootScope.me;
-        $state.go('login');
+        if ($state.current.name === 'posts.detail') {
+            $state.go($state.current.name, {'slug': $state.params.slug});
+        } else {
+            $state.go('login');
+        }
     });
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -96,13 +104,24 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
             );
 
         } else {
+            console.log(error);
             $mdToast.show(
                 $mdToast.simple()
-                .content(error)
+                .content('An error occured!')
                 .position('right bottom')
             );
         }
 
-        $state.go('login');
+        Users.me(function (me) {
+            if (me.main || me.posts || me.polls) {
+                $state.go('dashboard.intro');
+            } else {
+                $state.go('login');
+            }
+        }, function (err) {
+            $state.go('login');
+        });
+
+
     });
 }]);

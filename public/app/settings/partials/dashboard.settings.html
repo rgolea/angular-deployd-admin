@@ -2,8 +2,12 @@
 <md-content layout="column" layout-padding layout-gt-md="row">
     <!--    List of Settings     -->
     <md-content flex>
+        <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchSettings" ng-model-options="{ debounce: 500 }">
+        </md-input-container>
         <md-list>
-            <md-list-item class="md-2-line" ng-repeat="setting in settings" ng-click="open(setting)" aria-label="Open setting">
+            <md-list-item class="md-2-line" ng-repeat="setting in settings | filter:searchSettings" ng-click="open(setting)" aria-label="Open setting">
                 <md-icon md-svg-icon="/icons/fi-widget.svg"></md-icon>
                 <div class="md-list-item-text">
                     <h3>{{setting.name | uppercase}}</h3>
@@ -28,6 +32,10 @@
             <md-select placeholder="Theme" ng-model="newSetting.theme" style="width:100%;">
                 <md-option ng-repeat="theme in themes" value="{{theme}}">{{theme | uppercase}}</md-option>
             </md-select>
+            <md-input-container>
+                <label>Public description - ({{160 - newSetting.description.length}})</label>
+                <textarea ng-model="newSetting.description" cols="30" rows="4" ng-maxlength="160"></textarea>
+            </md-input-container>
             <md-switch ng-model="newSetting.active">Active</md-switch>
             <md-button type="submit" class="md-raised md-primary">Submit</md-button>
             <md-button type="button" ng-click="reset()" class="md-raised">Reset</md-button>

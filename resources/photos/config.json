@@ -1,3 +1,4 @@
 {
-	"type": "Fileupload"
+	"type": "Fileupload",
+	"directory": "upload"
 }

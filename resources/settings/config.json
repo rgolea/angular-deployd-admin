@@ -32,6 +32,14 @@
 			"required": true,
 			"id": "theme",
 			"order": 3
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 4
 		}
 	}
 }

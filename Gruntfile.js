@@ -14,7 +14,8 @@ module.exports = function (grunt) {
                     './bower_components/angular-file-data-url/src/fileDataUrl.js',
                     './bower_components/marked/lib/marked.js',
                     './bower_components/angular-marked/angular-marked.js',
-                    './bower_components/ng-file-upload/ng-file-upload-all.js'
+                    './bower_components/ng-file-upload/ng-file-upload-all.js',
+                    './bower_components/ngmap/build/scripts/ng-map.js'
                 ],
                 dest: './public/dist/bower.js'
             },

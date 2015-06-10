@@ -3,11 +3,15 @@
         <h1 class="md-toolbar-tools">Posts</h1>
     </md-toolbar>
     <md-content>
+        <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchPosts" ng-model-options="{ debounce: 500 }">
+        </md-input-container>
         <md-list>
             <p layout-padding ng-hide="posts.length" aria-label="No posts">
                 No posts.
             </p>
-            <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created'" aria-label="Show post" ng-click="show(post)">{{post.title}}
+            <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created' | filter: searchPosts" aria-label="Show post" ng-click="show(post)">{{post.title}}
                 <md-icon md-svg-icon="icons/fi-trash.svg" aria-label="Delete post" ng-click="delete($event, post)" class="md-secondary"></md-icon>
             </md-list-item>
             <md-divider></md-divider>
@@ -41,6 +45,10 @@
                 <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id"></textarea>
             </md-input-container>
             <md-chips ng-model="newPost.tags" placeholder="Add more..." secondary-placeholder="Tags" readonly="newPost.creator !== me.id && !me.admin && newPost.id"></md-chips>
+            <md-input-container>
+                <label>Public description - ({{160 - newSetting.description.length}})</label>
+                <textarea ng-model="newPost.description" cols="30" rows="4" ng-maxlength="160"></textarea>
+            </md-input-container>
             <md-checkbox ng-model="newPost.static" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id">Static</md-checkbox>
             <md-button class="md-primary md-raised" type="submit">Submit</md-button>
             <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
@@ -49,9 +57,10 @@
     <md-content layout="column" flex ng-hide="showComments">
         <h3>Preview</h3>
         <h1>{{newPost.title}}</h1>
-        <h6 ng-if="newPost.user">{{newPost.user.lastName}}, {{newPost.user.firstName}}</h6>
-        <h6 ng-if="!newPost.user && newPost.title && !me.socialAccount">{{me.lastName}}, {{me.firstName}}</h6>
-        <h6 ng-if="!newPost.user && newPost.title && me.socialAccount">{{me.profile.displayName}} - {{me.socialAccount}}</h6>
+        <h6 ng-if="newPost.title && !newPost.id && !me.socialAccount">{{me.lastName}}, {{me.firstName}}</h6>
+        <h6 ng-if="newPost.title && !newPost.id && me.socialAccount">{{me.profile.displayName}} - {{me.socialAccount}}</h6>
+        <h6 ng-if="newPost.title && newPost.id && !newPost.user.socialAccount">{{newPost.user.lastName}}, {{newPost.user.firstName}}</h6>
+        <h6 ng-if="newPost.title && newPost.id && newPost.user.socialAccount">{{newPost.user.profile.displayName}} - {{newPost.user.socialAccount}}</h6>
         <center>
             <md-content layout="column" marked="newPost.content"></md-content>
         </center>
@@ -61,8 +70,12 @@
     <md-content layout="column" ng-show="showComments" flex>
         <h3>Comments</h3>
         <md-content layout="column" layout-padding>
+           <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchComments" ng-model-options="{ debounce: 500 }">
+           </md-input-container>
             <md-list>
-                <md-list-item ng-repeat="comment in comments" class="md-3-line" ng-click="allow($event, comment)" aria-label="Allow posting on main page">
+                <md-list-item ng-repeat="comment in comments | filter: searchComments" class="md-3-line" ng-click="allow($event, comment)" aria-label="Allow posting on main page">
                     <img ng-if="comment.user.photo" ng-src="{{comment.user.photo}}" class="md-avatar" alt="{{comment.user.firstName}}">
                     <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{comment.user.profile.id}}/picture?width=300&height=300" class="md-avatar" />
                     <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'google'" ng-src="{{comment.user.profile._json.picture}}" class="md-avatar" />

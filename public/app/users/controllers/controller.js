@@ -1,4 +1,4 @@
-app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeout', '$mdDialog', '$mdToast', 'BASE_URL', function ($scope, Users, $state, $rootScope, $timeout, $mdDialog, $mdToast, BASE_URL) {
+app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDialog', '$mdToast', 'BASE_URL', function ($scope, Users, $state, $rootScope, $mdDialog, $mdToast, BASE_URL) {
 
     //    Setting up
     $scope.newUser = new Users();
@@ -6,7 +6,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$timeou
 
     //    Save form
 
-    $scope.redirectURL = BASE_URL + '%23/dashboard/intro';
+    $scope.redirectURL = BASE_URL + '%23%21/dashboard/intro';
     
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
