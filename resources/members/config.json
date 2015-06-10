@@ -25,12 +25,12 @@
 			"id": "lastName",
 			"order": 2
 		},
-		"categories": {
-			"name": "categories",
-			"type": "array",
-			"typeLabel": "array",
+		"category": {
+			"name": "category",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "categories",
+			"id": "category",
 			"order": 3
 		}
 	}

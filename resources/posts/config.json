@@ -56,6 +56,14 @@
 			"required": false,
 			"id": "created",
 			"order": 6
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 7
 		}
 	}
 }

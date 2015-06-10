@@ -1,3 +1,11 @@
 {
-	"type": "Email"
+	"type": "Email",
+	"host": "smtp.mandrillapp.com",
+	"port": "587",
+	"ssl": false,
+	"username": "rgolea@gmail.com",
+	"password": "9m0ezuiZtAEK6NWefTNVXg",
+	"defaultFromAddress": "info@cardiom.ro",
+	"internalOnly": false,
+	"productionOnly": false
 }

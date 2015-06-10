@@ -45,6 +45,10 @@
                 <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id"></textarea>
             </md-input-container>
             <md-chips ng-model="newPost.tags" placeholder="Add more..." secondary-placeholder="Tags" readonly="newPost.creator !== me.id && !me.admin && newPost.id"></md-chips>
+            <md-input-container>
+                <label>Public description - ({{160 - newSetting.description.length}})</label>
+                <textarea ng-model="newPost.description" cols="30" rows="4" ng-maxlength="160"></textarea>
+            </md-input-container>
             <md-checkbox ng-model="newPost.static" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id">Static</md-checkbox>
             <md-button class="md-primary md-raised" type="submit">Submit</md-button>
             <md-button class="md-raised" type="button" ng-click="reset()">Cancel</md-button>
