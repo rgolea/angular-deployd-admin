@@ -1,0 +1,60 @@
+<md-toolbar class="md-tall" layout="row" layout-align="start center">
+    <div class="md-toolbar-tools">
+        <h2>
+          <span ng-bind="settings.appName"></span>
+        </h2>
+        <span flex></span>
+        <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Show menu">
+            <md-icon md-svg-icon="/icons/fi-thumbnails.svg" aria-label="Show menu"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar layout="row" layout-align="start center">
+        <div class="md-toolbar-tools">
+            <md-button ng-controller="dashboardCtrl" class="md-icon-button" ng-click="toggle()" aria-label="Close menu">
+                <md-icon md-svg-icon="/icons/fi-x.svg" style="width: 20px; height:20px;"></md-icon>
+            </md-button>
+            <h2>
+          <span>Menu</span>
+        </h2>
+        </div>
+    </md-toolbar>
+    <md-content>
+        <md-list ng-controller="dashboardCtrl">
+           <md-list-item ng-click="state('dashboard.intro')">
+                Home
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="state('dashboard.content')" ng-if="me.admin || me.main">
+                Content
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.members')" ng-if="me.admin || me.main">
+                Members
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.polls')" ng-if="me.admin || me.polls">
+                Polls
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.posts')" ng-if="me.admin || me.posts">
+                Posts
+            </md-list-item>
+            <md-list-item ng-click="state('admin.photos')" ng-if="me.admin || me.posts || me.main">
+                Photos
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.services')" ng-if="me.admin || me.main">
+                Services
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.settings')" ng-if="me.admin">
+                Settings
+            </md-list-item>
+            <md-list-item ng-click="state('dashboard.users')" ng-if="me.admin">
+                Users
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-controller="usersCtrl">
+                <md-button class="md-warn" flex ng-click="logout()">Logout</md-button>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<ui-view></ui-view>

@@ -1,0 +1,101 @@
+<div layout="row" style="min-height:100%;">
+    <menu></menu>
+    <md-content flex layout="column">
+        <md-toolbar style="position:fixed;">
+            <div class="md-toolbar-tools">
+
+                <md-button class="md-icon-button" ng-click="toggle()" aria-label="Menu" hide-gt-md>
+                    <md-icon md-svg-icon="/icons/fi-thumbnails.svg"></md-icon>
+                </md-button>
+                <h3 md-whiteframe="3">
+ Indo-Mars.Com
+          </h3>
+            </div>
+        </md-toolbar>
+        <br>
+        <br>
+        <br>
+        <md-content>
+            <!--        About     -->
+            <center>
+                <h1>{{::aboutContent.title}} </h1>
+                <md-content layout="column" marked="aboutContent.content"></md-content>
+            </center>
+            <!--            Other contents     -->
+            <md-content layout="row" layout-padding>
+                <md-content flex-gt-sm="50" flex ng-repeat="content in otherContents | filter:search">
+                    <h3>{{::content.title}}</h3>
+                    <md-content layout="column" marked="content.content"></md-content>
+                </md-content>
+            </md-content>
+            <md-divider></md-divider>
+            <md-content layout-padding>
+                <center>
+                    <h1>Member info</h1>
+                    <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+                        <md-grid-tile ng-repeat="member in members | filter:search | orderBy:'lastName'" md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-gutter="2em" md-gutter-gt-sm="1em" ng-style="{'background-image' : 'url(' + member.photo + ')'}" style="background-size: cover; background-position:center;">
+                            <md-grid-tile-footer>
+                                <h3>{{::member.lastName}}, {{::member.firstName}} - {{::member.fullCategory.name}}</h3>
+                            </md-grid-tile-footer>
+                        </md-grid-tile>
+                    </md-grid-list>
+                </center>
+            </md-content>
+            <!--            Laborator     -->
+            <md-divider></md-divider>
+            <md-content layout-padding style="padding-left: 15%; padding-right: 15%;">
+                <center>
+                    <h1>Service</h1>
+                </center>
+                <md-content ng-repeat="category in serviceCategories | filter:search" layout-padding>
+                    <h3>{{::category.name}}</h3>
+                    <md-list flex="80">
+                        <md-list-item ng-repeat="service in category.services | filter:search" class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h3>{{::service.name}}</h3>
+                                <p>{{::service.days | number}} zile</p>
+                                <span flex></span>
+                                <p class="md-secondary">{{::service.price | currency:'RON'}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-content>
+            <md-divider></md-divider>
+            <md-content layout-padding id="polls">
+                <center>
+                    <h1>Questions</h1>
+                </center>
+                <md-content layout-padding>
+                    <md-content layout-padding ng-repeat="question in questions | filter:search">
+                        <form ng-submit="sendPoll()">
+                            <md-input-container>
+                                <label>Full Name</label>
+                                <input type="text" ng-model="newPoll.fullName">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Telephone</label>
+                                <input type="text" ng-model="newPoll.tel">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Email</label>
+                                <input type="email" ng-model="newPoll.email">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Address</label>
+                                <textarea cols="30" rows="3" ng-model="newPoll.address"></textarea>
+                            </md-input-container>
+                            <h3>{{::$index+1}}. {{::question.question}}</h3>
+                            <md-radio-group ng-model="newPoll.answers[$index]">
+                                <md-radio-button ng-repeat="answer in question.answers" value="{{::question.question}}-{{::answer.text}}">{{::answer.text}}</md-radio-button>
+                            </md-radio-group>
+                            <md-button type="submit" class="md-primary">Submit</md-button>
+                        </form>
+                    </md-content>
+                </md-content>
+            </md-content>
+        </md-content>
+        <br>
+        <ui-view></ui-view>
+    </md-content>
+</div>

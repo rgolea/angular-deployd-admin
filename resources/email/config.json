@@ -1,0 +1,12 @@
+{
+	"type": "Email",
+	"host": "smtp.1and1.com",
+	"port": "587",
+	"ssl": false,
+	"username": "info@indo-mars.com",
+	"password": "9m0ezuiZtAEK6NWefTNVXg",
+	"defaultFromAddress": "info@indo-mars.com",
+	"internalOnly": true,
+	"productionOnly": false,
+	"base64": false
+}

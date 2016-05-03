@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"comment": {
+			"name": "comment",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "comment",
+			"order": 0
+		},
+		"allow": {
+			"name": "allow",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "allow",
+			"order": 1
+		},
+		"userId": {
+			"name": "userId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "userId",
+			"order": 2
+		},
+		"postId": {
+			"name": "postId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "postId",
+			"order": 3
+		}
+	}
+}

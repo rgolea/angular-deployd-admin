@@ -1,0 +1,21 @@
+<md-button class="md-fab" ng-disabled="progress">
+    <label for="upload_photo" style="display:block;" aria-label="Add photo">
+        <md-icon md-svg-icon="icons/fi-plus.svg" aria-label="Add photo" style="width:20px; height:20px;"></md-icon>
+    </label>
+</md-button>
+<md-content layout="row" layout-padding>
+    <input type="file" ng-disabled="progress" id="upload_photo" ngf-change="upload(newPhotos)" ngf-select ng-model="newPhotos" ngf-multiple="true" accept="image/*" ngf-capture="'camera'" style="display:none;">
+    <md-progress-linear ng-show="progress" md-mode="determinate" value="{{progress}}"></md-progress-linear>
+</md-content>
+<md-content flex layout-padding>
+    <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+        <md-grid-tile ng-repeat="photo in photos | orderBy:'-creationDate'" md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-gutter="2em" md-gutter-gt-sm="1em" ng-style="{'background-image' : 'url(/upload/' + photo.filename + ')'}" style="background-size: cover; background-position:center;">
+           <md-button class="md-fab md-hover-button" ng-click="open(photo)" aria-label="View picture in a new tab">
+               <md-icon md-svg-icon="icons/fi-link.svg"></md-icon>
+           </md-button>
+            <md-grid-tile-footer ng-click="delete($event, photo)" aria-label="Delete picture">
+                <h3>Added: {{photo.creationDate | date: 'dd/MM/yyyy'}}</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+</md-content>

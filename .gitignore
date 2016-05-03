@@ -1,0 +1,9 @@
+node_modules
+bower_components
+/public/dist
+.dpd
+data
+public/fonts
+npm-debug.log
+public/upload
+.DS_Store

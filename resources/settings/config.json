@@ -1,0 +1,45 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"appName": {
+			"name": "appName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "appName",
+			"order": 1
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 2
+		},
+		"theme": {
+			"name": "theme",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "theme",
+			"order": 3
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 4
+		}
+	}
+}
