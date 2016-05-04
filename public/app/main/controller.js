@@ -7,11 +7,11 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
     });
     $scope.members = Members.query();
     $scope.questions = Questions.query();
-    
+
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-    
+
     $scope.goPost = function(post){
         $state.go('posts.detail', {slug: post.slug})
     };
@@ -35,9 +35,9 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
         $scope.newPoll = {};
         $scope.newPoll.answers = new Array();
     };
-    
+
     resetPoll();
-    
+
     $scope.sendContactForm = function () {
         var poll = new Email();
         poll.to = DEFAULT_EMAIL;
@@ -56,7 +56,7 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
                 .position('right bottom')
                 .parent(angular.element(document.getElementById('contactForm')))
             );
-            
+
             $scope.contact = {};
         }, function (err) {
             console.log(err);
@@ -87,7 +87,7 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
                 .position('right bottom')
                 .parent(angular.element(document.getElementById('polls')))
             );
-            
+
             resetPoll();
         }, function (err) {
             console.log(err);

@@ -1,9 +1,9 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
     <md-content style="height:230px;" layout="column" layout-align="end">
         <center>
-            <div style="width:150px; height:150px; background-image: url(logo.png);
+            <div style="width:150px; height:150px; background-image: url(logo.jpg);
         background-position: center;
-        background-size: cover;"></div>
+        background-size: 100%;"></div>
         </center>
         <div class="md-toolbar-tools" layout="row" layout-align="center">
             <h2>{{::settings.appName}}</h2>
@@ -26,7 +26,7 @@
         </md-list-item>
         <md-divider></md-divider>
         <md-list-item ng-click="state('login')">
-            <p style="font-size:1.2em">Private Zone</p>
+            <p style="font-size:1.2em">Login</p>
             <span flex></span>
             <md-icon md-svg-icon="/icons/fi-key.svg"></md-icon>
         </md-list-item>

@@ -13,7 +13,7 @@ app.controller('mainPostsCtrl', ['$scope', '$state', 'Posts', function ($scope, 
 }]);
 
 app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments', '$mdToast', '$rootScope','BASE_URL', function ($scope, $stateParams, Posts, Comments, $mdToast, $rootScope, BASE_URL) {
-    
+
     Posts.query({
         slug: $stateParams.slug,
         includeAuthor: true,
@@ -21,13 +21,13 @@ app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments'
     }, function (posts) {
         $scope.post = posts[0];
     });
-    
+
     $scope.logout = function () {
         $rootScope.$broadcast('user:logout');
     };
-    
-    $scope.redirectURL = BASE_URL + '%23%21/posts/'+ $stateParams.slug; 
-    
+
+    $scope.redirectURL = BASE_URL + '%23%21/posts/'+ $stateParams.slug;
+
     $scope.newComment = new Comments();
 
     $scope.addComment = function () {

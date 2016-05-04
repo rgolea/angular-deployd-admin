@@ -32,7 +32,7 @@ app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locat
                 enabled: true,
                 requireBase: false
             });
-    
+
     $locationProvider.hashPrefix('!');
 
     $urlRouterProvider.otherwise('/');
@@ -44,7 +44,7 @@ app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locat
             controller: 'usersCtrl'
         })
         .state('dashboard', {
-            url: '/dashboard',
+            url: '/cmsdashboard',
             templateUrl: '/dist/app/dashboard.html',
             abstract: true,
             resolve: {
@@ -100,8 +100,10 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
 
     $rootScope.$on('user:logout', function () {
         Users.logout();
+        
         delete sessionStorage.authenticated;
         delete $rootScope.me;
+        
         if ($state.current.name === 'posts.detail') {
             $state.go($state.current.name, {'slug': $state.params.slug});
         } else {
