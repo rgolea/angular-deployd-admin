@@ -72,18 +72,27 @@ For Application in development:
 npm run dev
 ```
 ---
-UIs - User Interfaces:
-1. Deployd admin Dashboard: URL: http://localhost:2403/dashboard
+###User Interfaces: ( GUI )
+ ```
+1. Deployd admin Dashboard: URL:
+```
+http://localhost:2403/dashboard
+```
 2. Public website : URL: http://localhost:2403
+```
 3. Website admin site (cms to update the public pages / add users / polls, etc.) - in the public website click on 'login' to open the cms admin site.
-
+```
 -- To change the first page (website look and content), login (step 3) to the Website admin site 
+```
 -- then  click on the menu button to open the side navigation menu
+```
 -- in the menu select 'Settings' -here you should set up your application title, app name, theme, etc.
+```
 -- you can create more users with different permission levels
 
+```
 We are working on to make it best. Post your comments here. 
-
+---
 
 
 
