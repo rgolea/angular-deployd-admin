@@ -54,21 +54,42 @@ grunt watch
 ---
 ###Running the app
 
-You can run the app by starting mongodb and the entire app. After that, open your browser and go to [http://localhost:2403/dashboard](http://localhost:2403/dashboard). Go to the users collection and add an admin user.
+You can run the app by starting mongodb and the entire app. After that, open your browser and go to [http://localhost:2403/dashboard](http://localhost:2403/dashboard). Go to the users collection and add an admin user. (Fillin Users first and last name and select admin column check box to make the user as 'ADMIN')
 
+First start and run the,
 MongoDB:
 ```
 mongod 
 ```
-
-Application in production:
+Next start the deployd web server,
+For Application in production: 
 ```
 npm start
 ```
 
-Application in development:
+For Application in development:
 ```
 npm run dev
 ```
 ---
+UIs - User Interfaces:
+1. Deployd admin Dashboard: URL: http://localhost:2403/dashboard
+2. Public website : URL: http://localhost:2403
+3. Website admin site (cms to update the public pages / add users / polls, etc.) - in the public website click on 'login' to open the cms admin site.
+
+-- To change the first page (website look and content), login (step 3) to the Website admin site 
+-- then  click on the menu button to open the side navigation menu
+-- in the menu select 'Settings' -here you should set up your application title, app name, theme, etc.
+-- you can create more users with different permission levels
+
+We are working on to make it best. Post your comments here. 
+
+
+
+
+
+
+
+
+
 ####Thank you
