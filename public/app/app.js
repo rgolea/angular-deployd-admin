@@ -52,7 +52,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
             controller: 'usersCtrl'
         })
         .state('dashboard', {
-            url: '/dashboard',
+            url: '/cmsdashboard',
             templateUrl: '/dist/app/dashboard.html',
             abstract: true,
             resolve: {
@@ -108,8 +108,10 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
 
     $rootScope.$on('user:logout', function () {
         Users.logout();
+        
         delete sessionStorage.authenticated;
         delete $rootScope.me;
+        
         if ($state.current.name === 'posts.detail') {
             $state.go($state.current.name, {'slug': $state.params.slug});
         } else {

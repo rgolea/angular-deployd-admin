@@ -3,7 +3,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     //    Setting up
     $scope.newUser = new Users();
     $scope.users = Users.query();
-
+   $scope.me1=me;
     //    Save form
 
     $scope.redirectURL = BASE_URL + '%23%21/dashboard/intro';
@@ -77,6 +77,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     //    Log out user
     $scope.logout = function () {
         $rootScope.$broadcast('user:logout');
+        
     };
 
     //    Prepare form for adding

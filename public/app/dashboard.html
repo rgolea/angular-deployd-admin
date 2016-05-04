@@ -22,6 +22,12 @@
     </md-toolbar>
     <md-content>
         <md-list ng-controller="dashboardCtrl">
+             <md-list-item ng-repeat="item in adminmenu" ng-click="state('{{item.statelink}}')" >
+            <p style="font-size:1.2em">{{item.title}}</p>
+            
+<!--            Icon-->
+        </md-list-item>
+<!--
            <md-list-item ng-click="state('dashboard.intro')">
                 Home
             </md-list-item>
@@ -38,11 +44,15 @@
             <md-list-item ng-click="state('dashboard.posts')" ng-if="me.admin || me.posts">
                 Posts
             </md-list-item>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             <md-list-item ng-click="state('admin.photos')" ng-if="me.admin || me.posts || me.main">
 =======
             <md-list-item ng-click="state('dashboard.photos')" ng-if="me.admin || me.posts || me.main">
 >>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
+=======
+            <md-list-item ng-click="state('dashboard.photos')" ng-if="me.admin || me.posts || me.main">
+>>>>>>> Stashed changes
                 Photos
             </md-list-item>
             <md-list-item ng-click="state('dashboard.services')" ng-if="me.admin || me.main">
@@ -54,6 +64,7 @@
             <md-list-item ng-click="state('dashboard.users')" ng-if="me.admin">
                 Users
             </md-list-item>
+-->
             <md-divider></md-divider>
             <md-list-item ng-controller="usersCtrl">
                 <md-button class="md-warn" flex ng-click="logout()">Logout</md-button>

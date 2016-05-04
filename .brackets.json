@@ -12,6 +12,17 @@
         "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/tabs/tabs.min.js",
         "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/subheader/subheader.min.js",
         "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-ui-router/release/angular-ui-router.min.js",
-        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/users/get.js"
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/users/get.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/settings/validate.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/users/delete.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/services-category/validate.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/users/post.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/public/app/main/controller.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/public/app/app.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/public/app/dashboard.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/resources/comments/delete.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/resources/comments/get.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/resources/comments/post.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/angular-deployd-admin/resources/comments/put.js"
     ]
 }
