@@ -1,0 +1,38 @@
+<md-content layout-padding>
+    <center>
+        <h1>{{::post.title}}</h1>
+        <md-content marked="::post.content"></md-content>
+    </center>
+    <md-content>
+        <p style="float:left; padding-left:15%;" ng-if="::post.tags.length">Tag: {{::post.tags.toString()}}</p>
+        <p style="float:right; padding-right:15%;" ng-if="post.user.socialAccount">Scris de {{::post.user.profile.displayName}}</p>
+        <p style="float:right; padding-right:15%;" ng-if="!post.user.socialAccount">Scris de {{::post.user.firstName}} {{::post.user.lastName}}</p>
+    </md-content>
+    <md-list>
+        <md-list-item class="md-2-line" ng-repeat="comment in post.comments">
+            <img ng-if="comment.user.photo" ng-src="{{comment.user.photo}}" class="md-avatar" alt="{{comment.user.firstName}}">
+            <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'facebook'" ng-src="https://graph.facebook.com/{{comment.user.profile.id}}/picture?width=300&height=300" class="md-avatar" />
+            <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'google'" ng-src="{{comment.user.profile._json.picture}}" class="md-avatar" />
+            <img ng-if="comment.user.socialAccount && comment.user.socialAccount == 'twitter'" ng-src="{{comment.user.profile._json.profile_image_url_https}}" class="md-avatar" />
+            <img ng-if="!comment.user.photo && !comment.user.socialAccount" ng-src="http://www.placehold.it/300" class="md-avatar" alt="{{comment.user.firstName}}">
+            <div class="md-list-item-text">
+                <h3>{{comment.comment}}</h3>
+                <p ng-if="comment.user.socialAccount">{{comment.user.profile.displayName}}</p>
+                <p ng-if="!comment.user.socialAccount">{{comment.user.firstName}} {{comment.user.firstName}}</p>
+            </div>
+        </md-list-item>
+        <md-list-item ng-if="me.id">
+            <md-input-container flex>
+                <label>Comment</label>
+                <textarea name="" id="" cols="30" rows="5" ng-model="newComment.comment"></textarea>
+            </md-input-container>
+            <md-button class="md-primary md-raised" ng-click="addComment()">Add</md-button>
+            <md-button class="md-warn md-raised" ng-click="logout()">Log out</md-button>
+        </md-list-item>
+        <md-list-item ng-if="!me.id">
+            <md-button style="background-color:#3b5998; color:white; width:100%;" class="md-raised" ng-href="/auth/facebook/callback?redirectURL={{redirectURL}}">Facebook</md-button>
+            <md-button style="background-color:#00aced; color:white; width:100%;" class="md-raised" ng-href="/auth/twitter/callback?redirectURL={{redirectURL}}">Twitter</md-button>
+            <md-button style="background-color:#dd4b39; color:white; width:100%;" class="md-raised" ng-href="/auth/google/callback?redirectURL={{redirectURL}}">Google</md-button>
+        </md-list-item>
+    </md-list>
+</md-content>

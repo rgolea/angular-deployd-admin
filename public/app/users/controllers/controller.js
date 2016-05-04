@@ -3,11 +3,11 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     //    Setting up
     $scope.newUser = new Users();
     $scope.users = Users.query();
- 
+
     //    Save form
 
     $scope.redirectURL = BASE_URL + '%23%21/dashboard/intro';
-
+    
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
         $scope.newUser.$save().then(function (success) {
@@ -45,7 +45,7 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     $scope.login = function () {
         $scope.newUser.$login().then(function (success) {
             $rootScope.$broadcast('user:login');
-            $state.go('dashboard.intro');
+            $state.go('dashboard.intro'); 
         }, function (err) {
             if (err.status == 401) {
                 $mdToast.show(
@@ -69,7 +69,6 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     //    Log out user
     $scope.logout = function () {
         $rootScope.$broadcast('user:logout');
-        
     };
 
     //    Prepare form for adding

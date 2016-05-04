@@ -1,0 +1,57 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z5" md-component-id="left">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Content</h1>
+    </md-toolbar>
+    <md-content>
+        <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchPosts" ng-model-options="{ debounce: 500 }">
+        </md-input-container>
+        <md-list>
+            <p layout-padding ng-hide="posts.length">
+                No content posts.
+            </p>
+            <md-list-item ng-show="posts" ng-repeat="post in posts | orderBy:'-created' | filter:searchPosts" aria-label="Show content" ng-click="show(post)" class="md-2-line">
+                <div class="md-list-item-text">
+                    <h3>{{post.title}}</h3>
+                    <p ng-if="post.about">About page</p>
+                </div>
+                <md-icon md-svg-icon="icons/fi-trash.svg" aria-label="Delete content" ng-click="delete($event, post)" class="md-secondary"></md-icon>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="toggle()" class="md-warn">
+                Close
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<md-button class="md-fab md-accent" ng-click="toggle()" aria-label="Show list of contents">
+    <md-icon md-svg-src="icons/fi-list.svg" style="width:20px; height:20px;"></md-icon>
+</md-button>
+<md-content layout="column" layout-gt-md="row" layout-padding>
+    <md-content layout="column" flex>
+        <h3>Markdown</h3>
+        <form ng-submit="save()">
+            <md-input-container>
+                <label>Title</label>
+                <input type="text" ng-model="newPost.title" ng-change="slugify()" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id">
+            </md-input-container>
+            <md-input-container>
+                <label>Content</label>
+                <textarea name="" id="" cols="30" rows="10" ng-model="newPost.content" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id"></textarea>
+            </md-input-container>
+            <md-checkbox ng-model="newPost.about" ng-disabled="newPost.creator !== me.id && !me.admin && newPost.id" aria-label="Check if this is the about content">About</md-checkbox>
+            <md-button class="md-primary md-raised" type="submit" aria-label="Submit">Submit</md-button>
+            <md-button class="md-raised" type="button" ng-click="reset()" aria-label="Cancel">Cancel</md-button>
+        </form>
+    </md-content>
+    <md-content layout="column" flex>
+        <h1>{{newPost.title}}</h1>
+        <md-content layout="column" marked="newPost.content"></md-content>
+    </md-content>
+</md-content>
+<style>
+    img {
+        max-width: 100%;
+    }
+</style>

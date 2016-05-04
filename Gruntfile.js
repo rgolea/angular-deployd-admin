@@ -19,6 +19,7 @@ module.exports = function (grunt) {
                 ],
                 dest: './public/dist/bower.js'
             },
+<<<<<<< HEAD
 //            scriptsjs: {
 //                src: [
 //                    './public/app/**/*.js'
@@ -30,6 +31,13 @@ module.exports = function (grunt) {
                     './public/app/**/*.js'
                 ],
                 dest: './public/dist/script.min.js'
+=======
+            scriptsjs: {
+                src: [
+                    './public/app/**/*.js'
+                ],
+                dest: './public/dist/script.js'
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             },
             bowercss: {
                 src: [
@@ -44,6 +52,7 @@ module.exports = function (grunt) {
                 dest: './public/dist/style.css'
             }
         },
+<<<<<<< HEAD
 //        uglify: {
 //            bowerjs: {
 //                files: {
@@ -56,6 +65,20 @@ module.exports = function (grunt) {
 //                }
 //            }
 //        },
+=======
+        uglify: {
+            bowerjs: {
+                files: {
+                    './public/dist/bower.min.js': './public/dist/bower.js'
+                }
+            },
+            scriptsjs: {
+                files: {
+                    './public/dist/script.min.js': './public/dist/script.js'
+                }
+            }
+        },
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         cssmin: {
             bowercss: {
                 files: {
@@ -69,6 +92,7 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+<<<<<<< HEAD
 //            scripts: {
 //                files: ['./public/app/**/*.js'],
 //                tasks: ['concat:scriptsjs', 'uglify:scriptsjs']
@@ -76,6 +100,11 @@ module.exports = function (grunt) {
              scripts: {
                 files: ['./public/app/**/*.js'],
                 tasks: ['concat:scriptsjs']
+=======
+            scripts: {
+                files: ['./public/app/**/*.js'],
+                tasks: ['concat:scriptsjs', 'uglify:scriptsjs']
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             },
             css: {
                 files: ['./public/css/**/*.css'],
@@ -114,6 +143,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     //default task
+<<<<<<< HEAD
 //    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy']);
      grunt.registerTask('default', ['concat',   'cssmin', 'copy']);
 };
+=======
+    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy']);
+};
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
