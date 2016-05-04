@@ -13,7 +13,11 @@ app.controller('mainPostsCtrl', ['$scope', '$state', 'Posts', function ($scope, 
 }]);
 
 app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments', '$mdToast', '$rootScope','BASE_URL', function ($scope, $stateParams, Posts, Comments, $mdToast, $rootScope, BASE_URL) {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     Posts.query({
         slug: $stateParams.slug,
         includeAuthor: true,
@@ -21,6 +25,7 @@ app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments'
     }, function (posts) {
         $scope.post = posts[0];
     });
+<<<<<<< HEAD
 
     $scope.logout = function () {
         $rootScope.$broadcast('user:logout');
@@ -28,6 +33,15 @@ app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments'
 
     $scope.redirectURL = BASE_URL + '%23%21/posts/'+ $stateParams.slug;
 
+=======
+    
+    $scope.logout = function () {
+        $rootScope.$broadcast('user:logout');
+    };
+    
+    $scope.redirectURL = BASE_URL + '%23%21/posts/'+ $stateParams.slug; 
+    
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.newComment = new Comments();
 
     $scope.addComment = function () {
@@ -60,3 +74,18 @@ app.controller('detailPostsCtrl', ['$scope', '$stateParams', 'Posts', 'Comments'
 
 }]);
 
+<<<<<<< HEAD
+=======
+app.config(['$stateProvider', function ($stateProvider) {
+    $stateProvider
+        .state('posts', {
+            url: '/posts',
+            templateUrl: '/dist/app/main/posts/main.posts.html',
+            controller: 'mainPostsCtrl'
+        }).state('posts.detail', {
+            url: '/:slug',
+            templateUrl: '/dist/app/main/posts/main.posts.detail.html',
+            controller: 'detailPostsCtrl'
+        });
+}]);
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

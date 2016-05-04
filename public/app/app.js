@@ -6,6 +6,7 @@ if (window.location.host === 'localhost:2403') {
     app.value('SERVER_URL', 'http://192.168.1.40:2403');
 };
 
+<<<<<<< HEAD
 app.value('DEFAULT_EMAIL', 'info@indo-mars.com');
 
 app.value('BASE_URL', 'http://' + window.location.host);
@@ -32,6 +33,13 @@ app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locat
                 enabled: true,
                 requireBase: false
             });
+=======
+app.value('DEFAULT_EMAIL', 'rgolea@gmail.com');
+
+app.value('BASE_URL', 'http://' + window.location.host);
+
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
 
     $locationProvider.hashPrefix('!');
 
@@ -145,4 +153,8 @@ app.run(['$rootScope', 'Users', '$state', '$mdToast', function ($rootScope, User
 
 
     });
+<<<<<<< HEAD
 }]);
+=======
+}]);
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

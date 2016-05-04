@@ -7,11 +7,19 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
     });
     $scope.members = Members.query();
     $scope.questions = Questions.query();
+<<<<<<< HEAD
 
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
 
+=======
+    
+    $scope.toggle = function () {
+        $mdSidenav('left').toggle();
+    };
+    
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.goPost = function(post){
         $state.go('posts.detail', {slug: post.slug})
     };
@@ -35,9 +43,15 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
         $scope.newPoll = {};
         $scope.newPoll.answers = new Array();
     };
+<<<<<<< HEAD
 
     resetPoll();
 
+=======
+    
+    resetPoll();
+    
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.sendContactForm = function () {
         var poll = new Email();
         poll.to = DEFAULT_EMAIL;
@@ -56,7 +70,11 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
                 .position('right bottom')
                 .parent(angular.element(document.getElementById('contactForm')))
             );
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             $scope.contact = {};
         }, function (err) {
             console.log(err);
@@ -87,7 +105,11 @@ app.controller('mainCtrl', ['$scope', '$mdSidenav', '$state', 'Content', 'Servic
                 .position('right bottom')
                 .parent(angular.element(document.getElementById('polls')))
             );
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             resetPoll();
         }, function (err) {
             console.log(err);
@@ -114,4 +136,8 @@ app.directive('menu', function(){
         replace: true,
         controller: 'mainCtrl'
     };
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

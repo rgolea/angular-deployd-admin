@@ -3,6 +3,7 @@
     <md-content flex layout="column">
         <md-toolbar style="position:fixed;">
             <div class="md-toolbar-tools">
+<<<<<<< HEAD
 
                 <md-button class="md-icon-button" ng-click="toggle()" aria-label="Menu" hide-gt-md>
                     <md-icon md-svg-icon="/icons/fi-thumbnails.svg"></md-icon>
@@ -10,6 +11,11 @@
                 <h3 md-whiteframe="3">
  Indo-Mars.Com
           </h3>
+=======
+                <md-button class="md-icon-button" ng-click="toggle()" aria-label="Menu" hide-gt-md>
+                    <md-icon md-svg-icon="/icons/fi-thumbnails.svg"></md-icon>
+                </md-button>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             </div>
         </md-toolbar>
         <br>
@@ -18,7 +24,11 @@
         <md-content>
             <!--        About     -->
             <center>
+<<<<<<< HEAD
                 <h1>{{::aboutContent.title}} </h1>
+=======
+                <h1>{{::aboutContent.title}}</h1>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                 <md-content layout="column" marked="aboutContent.content"></md-content>
             </center>
             <!--            Other contents     -->
@@ -31,7 +41,11 @@
             <md-divider></md-divider>
             <md-content layout-padding>
                 <center>
+<<<<<<< HEAD
                     <h1>Member info</h1>
+=======
+                    <h1>Echipa medicala</h1>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                     <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
                         <md-grid-tile ng-repeat="member in members | filter:search | orderBy:'lastName'" md-rowspan="1" md-colspan="2" md-colspan-sm="2" md-gutter="2em" md-gutter-gt-sm="1em" ng-style="{'background-image' : 'url(' + member.photo + ')'}" style="background-size: cover; background-position:center;">
                             <md-grid-tile-footer>
@@ -45,7 +59,11 @@
             <md-divider></md-divider>
             <md-content layout-padding style="padding-left: 15%; padding-right: 15%;">
                 <center>
+<<<<<<< HEAD
                     <h1>Service</h1>
+=======
+                    <h1>Laborator</h1>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                 </center>
                 <md-content ng-repeat="category in serviceCategories | filter:search" layout-padding>
                     <h3>{{::category.name}}</h3>
@@ -64,17 +82,29 @@
             <md-divider></md-divider>
             <md-content layout-padding id="polls">
                 <center>
+<<<<<<< HEAD
                     <h1>Questions</h1>
+=======
+                    <h1>Chestionar</h1>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                 </center>
                 <md-content layout-padding>
                     <md-content layout-padding ng-repeat="question in questions | filter:search">
                         <form ng-submit="sendPoll()">
                             <md-input-container>
+<<<<<<< HEAD
                                 <label>Full Name</label>
                                 <input type="text" ng-model="newPoll.fullName">
                             </md-input-container>
                             <md-input-container>
                                 <label>Telephone</label>
+=======
+                                <label>Nume complet</label>
+                                <input type="text" ng-model="newPoll.fullName">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Telefon</label>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                                 <input type="text" ng-model="newPoll.tel">
                             </md-input-container>
                             <md-input-container>
@@ -82,14 +112,22 @@
                                 <input type="email" ng-model="newPoll.email">
                             </md-input-container>
                             <md-input-container>
+<<<<<<< HEAD
                                 <label>Address</label>
+=======
+                                <label>Adresa</label>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                                 <textarea cols="30" rows="3" ng-model="newPoll.address"></textarea>
                             </md-input-container>
                             <h3>{{::$index+1}}. {{::question.question}}</h3>
                             <md-radio-group ng-model="newPoll.answers[$index]">
                                 <md-radio-button ng-repeat="answer in question.answers" value="{{::question.question}}-{{::answer.text}}">{{::answer.text}}</md-radio-button>
                             </md-radio-group>
+<<<<<<< HEAD
                             <md-button type="submit" class="md-primary">Submit</md-button>
+=======
+                            <md-button type="submit" class="md-primary">Trimiteti</md-button>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                         </form>
                     </md-content>
                 </md-content>
@@ -98,4 +136,8 @@
         <br>
         <ui-view></ui-view>
     </md-content>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

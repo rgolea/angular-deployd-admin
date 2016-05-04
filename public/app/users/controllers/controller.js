@@ -7,7 +7,11 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     //    Save form
 
     $scope.redirectURL = BASE_URL + '%23%21/dashboard/intro';
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.save = function () {
         var i = $scope.users.indexOf($scope.newUser);
         $scope.newUser.$save().then(function (success) {
@@ -45,7 +49,11 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
     $scope.login = function () {
         $scope.newUser.$login().then(function (success) {
             $rootScope.$broadcast('user:login');
+<<<<<<< HEAD
             $state.go('dashboard.intro');
+=======
+            $state.go('dashboard.intro'); 
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         }, function (err) {
             if (err.status == 401) {
                 $mdToast.show(
@@ -129,4 +137,8 @@ app.controller('usersCtrl', ['$scope', 'Users', '$state', '$rootScope', '$mdDial
         $scope.showForm = false;
     };
 
+<<<<<<< HEAD
 }]);
+=======
+}]);
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

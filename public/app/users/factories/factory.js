@@ -15,4 +15,8 @@ app.factory('Users', ['$resource', 'SERVER_URL', function ($resource, SERVER_URL
             url: SERVER_URL + '/users/me'
         }
     });
+<<<<<<< HEAD
 }]);
+=======
+}]);
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

@@ -11,6 +11,7 @@
     </md-content>
     <md-list style="padding:0px;">
         <md-input-container>
+<<<<<<< HEAD
             <label>Search in Page</label>
             <input type="text" ng-model="search">
         </md-input-container>
@@ -19,6 +20,16 @@
         </md-list-item>
         <md-list-item ng-click="state('posts')">
             <p style="font-size:1.2em">Posts</p>
+=======
+            <label>Cautati in pagina</label>
+            <input type="text" ng-model="search">
+        </md-input-container>
+        <md-list-item ng-click="state('main')">
+            <p style="font-size:1.2em">Acasa</p>
+        </md-list-item>
+        <md-list-item ng-click="state('posts')">
+            <p style="font-size:1.2em">Pagini</p>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         </md-list-item>
         <md-divider ng-if="posts.length"></md-divider>
         <md-list-item ng-click="goPost(post)" ng-repeat="post in posts">
@@ -26,7 +37,11 @@
         </md-list-item>
         <md-divider></md-divider>
         <md-list-item ng-click="state('login')">
+<<<<<<< HEAD
             <p style="font-size:1.2em">Private Zone</p>
+=======
+            <p style="font-size:1.2em">Zona privata</p>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             <span flex></span>
             <md-icon md-svg-icon="/icons/fi-key.svg"></md-icon>
         </md-list-item>
@@ -37,7 +52,11 @@
     <md-divider></md-divider>
     <md-content layout-padding>
         <center>
+<<<<<<< HEAD
             <h2><a href="tel:"> </a></h2>
+=======
+            <h2><a href="tel:0040723378438">(+40) 723 378 438</a></h2>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         </center>
         <div map-lazy-load="http://maps.google.com/maps/api/js">
             <map zoom="17" center="[44.313717, 23.81993]" disable-default-u-i="true" disable-double-click-zoom="true" draggable="false" keyboard-shortcuts="false" max-zoom="17" min-zoom="17" map-type-id="TERRAIN">
@@ -46,12 +65,19 @@
                 <info-window id="bar" position="44.3145, 23.81993" visible="true" visible-on-marker="true">
                     <div ng-non-bindable>
                         <div id="siteNotice">
+<<<<<<< HEAD
                             <p>www.indo-mars.com</p>
 <!--
                             <p>Tel: <a href="tel: "> </a>
                             </p>
 -->
                             <p>E-mail: <a href="mailto:info@cardiom.ro">info@indo-mars.com</a>
+=======
+                            <p>Adresa: Str. Spania, Nr. 35A, Craiova</p>
+                            <p>Tel: <a href="tel:0040723378438">(+40) 723 378 438</a>
+                            </p>
+                            <p>E-mail: <a href="mailto:info@cardiom.ro">info@cardiom.ro</a>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                             </p>
                         </div>
                     </div>
@@ -61,11 +87,19 @@
         <h3>Contact</h3>
         <form ng-submit="sendContactForm()" id="contactForm">
             <md-input-container>
+<<<<<<< HEAD
                 <label>First Name</label>
                 <input type="text" ng-model="contact.name" required>
             </md-input-container>
             <md-input-container>
                 <label>Last Name</label>
+=======
+                <label>Prenume</label>
+                <input type="text" ng-model="contact.name" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Nume</label>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                 <input type="text" ng-model="contact.lname" required>
             </md-input-container>
             <md-input-container>
@@ -73,6 +107,7 @@
                 <input type="text" ng-model="contact.email" required>
             </md-input-container>
             <md-input-container>
+<<<<<<< HEAD
                 <label>Message</label>
                 <textarea cols="30" rows="5" ng-model="contact.message"></textarea>
             </md-input-container>
@@ -80,3 +115,12 @@
         </form>
     </md-content>
 </md-sidenav>
+=======
+                <label>Mesaj</label>
+                <textarea cols="30" rows="5" ng-model="contact.message"></textarea>
+            </md-input-container>
+            <md-button type="submit" class="md-primary">Trimiteti</md-button>
+        </form>
+    </md-content>
+</md-sidenav>
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

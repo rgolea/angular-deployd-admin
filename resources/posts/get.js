@@ -14,4 +14,8 @@ if(query.includeAuthor || query.includeAll){
     dpd.users.get({id: this.creator}, function(data){
         this.user = data;
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
