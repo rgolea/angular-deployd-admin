@@ -3,7 +3,7 @@ var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAri
 if (window.location.host === 'localhost:2403') {
     app.value('SERVER_URL', 'http://localhost:2403');
 } else {
-    app.value('SERVER_URL', 'http://192.168.1.40:2403');
+    app.value('SERVER_URL', 'http:// ');
 };
 
 app.value('DEFAULT_EMAIL', 'info@indo-mars.com');
@@ -12,7 +12,13 @@ app.value('BASE_URL', 'http://' + window.location.host);
 
 app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locationProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
-    //-- PV
+ 
+    
+    $locationProvider.hashPrefix('!');
+
+    $urlRouterProvider.otherwise('/');
+    
+    
       var customAmberMap = $mdThemingProvider.extendPalette('amber', {
                 'contrastDefaultColor': 'light',
                 'contrastDarkColors': ['50'],
@@ -24,18 +30,15 @@ app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locat
                     'default': '300',
                     'hue-1': '50'
                 })
-                .accentPalette('orange');
+                .accentPalette('orange') 
+    .warnPalette('indigo');
             $mdThemingProvider.theme('input', 'default')
-                .primaryPalette('amber')
+                .primaryPalette('amber');
                 // configure html5 to get links working on jsfiddle
-            $locationProvider.html5Mode({
-                enabled: true,
-                requireBase: false
-            });
-    
-    $locationProvider.hashPrefix('!');
-
-    $urlRouterProvider.otherwise('/');
+//            $locationProvider.html5Mode({
+//                enabled: true,
+//                requireBase: false
+//            });
 
     $stateProvider
         .state('login', {

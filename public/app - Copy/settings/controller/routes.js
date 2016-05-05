@@ -17,6 +17,8 @@ app.config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $m
         .primaryPalette('red')
         .accentPalette('purple')
         .warnPalette('indigo');
+    
+   
 
 
     $stateProvider
