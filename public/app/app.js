@@ -3,18 +3,42 @@ var app = angular.module('app', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAri
 if (window.location.host === 'localhost:2403') {
     app.value('SERVER_URL', 'http://localhost:2403');
 } else {
-    app.value('SERVER_URL', 'http://192.168.1.40:2403');
+    app.value('SERVER_URL', 'http:// ');
 };
 
-app.value('DEFAULT_EMAIL', 'rgolea@gmail.com');
+app.value('DEFAULT_EMAIL', 'info@indo-mars.com');
 
 app.value('BASE_URL', 'http://' + window.location.host);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$mdThemingProvider','$stateProvider', '$urlRouterProvider', '$locationProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
+ 
+    
     $locationProvider.hashPrefix('!');
 
     $urlRouterProvider.otherwise('/');
+    
+    
+      var customAmberMap = $mdThemingProvider.extendPalette('amber', {
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50'],
+                '50': 'ffffff'
+            });
+            $mdThemingProvider.definePalette('customAmber', customAmberMap);
+            $mdThemingProvider.theme('default')
+                .primaryPalette('customAmber', {
+                    'default': '300',
+                    'hue-1': '50'
+                })
+                .accentPalette('orange') 
+    .warnPalette('indigo');
+            $mdThemingProvider.theme('input', 'default')
+                .primaryPalette('amber');
+                // configure html5 to get links working on jsfiddle
+//            $locationProvider.html5Mode({
+//                enabled: true,
+//                requireBase: false
+//            });
 
     $stateProvider
         .state('login', {

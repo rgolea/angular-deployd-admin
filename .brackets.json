@@ -1,0 +1,15 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/closure/whiteframe/whiteframe.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/closure/dialog/dialog.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/subheader/subheader.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-file-data-url/dist/fileDataUrl.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-file-data-url/src/fileDataUrl.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-ui-router/release/angular-ui-router.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/resources/users/put.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/swipe/swipe.min.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/tabs/tabs.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/tabs/tabs.min.js",
+        "C:/Users/sendur-im1/Documents/Workspaces/DeploydCmsAdmin/bower_components/angular-material/modules/js/subheader/subheader.min.js"
+    ]
+}

@@ -1,0 +1,44 @@
+<!--<md-button ng-href="http://www.google.com/design/spec/style/color.html#color-ui-color-palette" target="_blank">View palettes</md-button>-->
+<md-content layout="column" layout-padding layout-gt-md="row">
+    <!--    List of Settings     -->
+    <md-content flex>
+        <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="searchSettings" ng-model-options="{ debounce: 500 }">
+        </md-input-container>
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="setting in settings | filter:searchSettings" ng-click="open(setting)" aria-label="Open setting">
+                <md-icon md-svg-icon="/icons/fi-widget.svg"></md-icon>
+                <div class="md-list-item-text">
+                    <h3>{{setting.name | uppercase}}</h3>
+                    <p ng-if="setting.active">Active</p>
+                    <p ng-if="!setting.active">Not active</p>
+                </div>
+                <md-icon class="md-secondary" ng-click="delete($event, setting)" aria-label="Delete this setting" md-svg-icon="/icons/fi-trash.svg"></md-icon>
+            </md-list-item>
+        </md-list>
+    </md-content>
+    <!--    Add Settings     -->
+    <md-content flex>
+        <form ng-submit="save()">
+            <md-input-container>
+                <label>Name*</label>
+                <input type="text" ng-model="newSetting.name" autocomplete="off">
+            </md-input-container>
+            <md-input-container>
+                <label>App name*</label>
+                <input type="text" ng-model="newSetting.appName" autocomplete="off">
+            </md-input-container>
+            <md-select placeholder="Theme" ng-model="newSetting.theme" style="width:100%;">
+                <md-option ng-repeat="theme in themes" value="{{theme}}">{{theme | uppercase}}</md-option>
+            </md-select>
+            <md-input-container>
+                <label>Public description - ({{160 - newSetting.description.length}})</label>
+                <textarea ng-model="newSetting.description" cols="30" rows="4" ng-maxlength="160"></textarea>
+            </md-input-container>
+            <md-switch ng-model="newSetting.active">Active</md-switch>
+            <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+            <md-button type="button" ng-click="reset()" class="md-raised">Reset</md-button>
+        </form>
+    </md-content>
+</md-content>

@@ -20,3 +20,26 @@ app.config(['$stateProvider', function ($stateProvider) {
             }
         });
 }]);
+
+
+   //-- PV
+//      var customAmberMap = $mdThemingProvider.extendPalette('amber', {
+//                'contrastDefaultColor': 'light',
+//                'contrastDarkColors': ['50'],
+//                '50': 'ffffff'
+//            });
+//            $mdThemingProvider.definePalette('customAmber', customAmberMap);
+//            $mdThemingProvider.theme('default')
+//                .primaryPalette('customAmber', {
+//                    'default': '300',
+//                    'hue-1': '50'
+//                })
+//                .accentPalette('orange') 
+//    .warnPalette('indigo');
+//            $mdThemingProvider.theme('input', 'default')
+//                .primaryPalette('amber');
+//                // configure html5 to get links working on jsfiddle
+//            $locationProvider.html5Mode({
+//                enabled: true,
+//                requireBase: false
+//            });

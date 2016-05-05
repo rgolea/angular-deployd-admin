@@ -1,0 +1,300 @@
+<script type='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>
+
+<script type='text/javascript'>
+// For simplicity, we're using jQuery for some things
+//   However, the library has no jQuery dependency
+$(function(){
+// Initialize library
+SE.init({
+    // Parameters obtained by registering an app, these are specific to the SE
+    //   documentation site
+    clientId: 1,
+    key: 'U4DMV*8nvpm3EOpvf69Rxw((',
+    // Used for cross domain communication, it will be validated
+    channelUrl: 'https://api.stackexchange.com/docs/proxy',
+    // Called when all initialization is finished
+    complete: function(data) {
+        $('#login-button')
+            .removeAttr('disabled')
+            .text('Run Example With Version '+data.version);
+    }
+});
+
+// Attach click handler to login button
+$('#login-button').click(function() {
+
+    // Make the authentication call, note that being in an onclick handler
+    //   is important; most browsers will hide windows opened without a
+    //   'click blessing'
+    SE.authenticate({
+        success: function(data) {
+            alert(
+                'User Authorized with account id = ' +
+                data.networkUsers[0].account_id + ', got access token = ' +
+                data.accessToken
+            );
+        },
+        error: function(data) {
+            alert('An error occurred:\n' + data.errorName + '\n' + data.errorMessage);
+        },
+        networkUsers: true
+    });
+});
+});
+</script>
+
+
+
+
+<html>
+<head>
+    <title>Stack Exchange API Documentation Authorization - Stack Exchange</title>
+    <meta name="mswebdialog-title" content="Stack Exchange API Documentation Authorization - Stack Exchange" />
+    <meta name="mswebdialog-header-color" content="#40A1DB" />
+    <meta name="mswebdialog-logo" content="https://i.stack.imgur.com/ATDFd.png" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function resizeDialog(width, height) {
+            "use strict";
+
+            var dialog = $('.dialog');
+
+            var targetUri = window.location.href;
+            var i = targetUri.indexOf('&redirect_uri=');
+            if (i == -1) return;
+            i += '&redirect_uri='.length;
+
+            var j = targetUri.indexOf('&', i + 1);
+            if (j == -1) j = targetUri.length;
+
+            var targetUri = targetUri.substring(i, j);
+
+            targetUri = decodeURIComponent(targetUri);
+
+            var k = targetUri.indexOf('/', targetUri.indexOf('://') + 3);
+            if (k == -1) k = targetUri.length;
+            targetUri = targetUri.substring(0, k);
+
+            var desiredSize = { width: dialog.width() + 60, height: dialog.height() + 60 };
+
+            var outerWidth, innerWidth;
+            var outerHeight, innerHeight;
+
+            if (window.outerHeight) {
+                outerHeight = window.outerHeight;
+                outerWidth = window.outerWidth;
+                innerHeight = window.innerHeight;
+                innerWidth = window.innerWidth;
+            } else {
+                innerHeight = $(window).height();
+                innerWidth = $(window).width();
+                outerHeight = innerHeight + 60;
+                outerWidth = innerWidth + 15;
+            }
+
+            if (width && height) {
+                desiredSize.width = width;
+                desiredSize.height = height;
+            }
+
+            if (self != window.top) {
+                // in an iframe
+                if (window.top.postMessage) {
+                    window.top.postMessage(desiredSize, targetUri);
+                }
+            } else {
+                desiredSize.width += outerWidth - innerWidth;
+                desiredSize.height += outerHeight - innerHeight;
+
+                if ($(window).width() == desiredSize.width && $(window).height() == desiredSize.height) return;
+
+                // in popup window
+                window.resizeTo(desiredSize.width, desiredSize.height);
+            }
+        }
+
+        $(function () {
+            $(document).bind('openidResize',
+                function (evt) {
+                    resizeDialog();
+                }
+            );
+
+
+            $(document).bind('openidNavigate',
+                function (evt) {
+                    resizeDialog(1024, 768);
+                }
+            );
+
+            resizeDialog();
+        });
+    </script>
+
+
+    <script src="//sstatic.net/stackexchange//js/master.js"></script>
+    <style type="text/css">
+        .app-perms li
+        {
+            list-style-type: circle !important;
+        }
+        .app-info
+        {
+            padding-left: 7px;
+            padding-top: 0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #CCC;
+        }
+        .app-description
+        {
+            font-size: 16px;
+        }
+        .app-perms li
+        {
+            list-style-type: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        .app-container
+        {
+            display: inline-block;
+        }
+        .app-approve
+        {
+            float:right;
+        }
+        body
+        {
+            background: #F4F4F4 !important;
+        }
+        .dialog
+        {
+            margin-left: auto;
+            margin-right: auto;
+            width: 600px;
+            margin-top: 12px;
+        }
+        .app-image
+        {
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+        .app-description
+        {
+            min-height: 50px;
+            width: 590px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="//sstatic.net/stackexchange//all.css" type="text/css" />
+</head>
+<body style="height:0!important">
+
+<div class="dialog">
+    <div class="app-container">
+        <div class="fl app-info">
+            <p class="app-description">
+                <img class="fl app-image" src="https://i.stack.imgur.com/ATDFd.png" width="50" height="50" />
+                Documentation for the Stack Exchange V2.0 API.
+
+This application powers the console, among other things.
+            </p>
+
+            <div class="app-perms">
+                This app needs these permissions
+                <ul>
+                    <li>To know what your accounts are on the Stack Exchange network</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="user-auth" class="fl">
+
+<style type="text/css">
+    #openid_form
+    {
+        width:610px;
+    }
+</style>
+<link rel="stylesheet" href="//sstatic.net/stackexchange//openid.css">
+<script type="text/javascript" src="//sstatic.net/stackexchange//js/third-party/openid-jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        // show the login form if no response is received from the iframe
+        var errorResponseTimer = setTimeout(function () {
+            failure();
+        }, 2000);
+
+        var failure = function() {
+            clearTimeout(errorResponseTimer);
+
+            $('#openid_form').removeAttr('style');
+            var customProviders = "";
+            var imgPath = "//sstatic.net/stackexchange/Img/openid/openid-logos.png?v=3";
+            openid.init('openid_identifier', customProviders, imgPath, true);
+        };
+
+
+        // Hide the login link, since we're letting you login here!
+        $('#top a:contains("log in")').hide();
+    });
+</script>
+
+<div>
+    <h3>You need to login to authorize this application</h3>
+
+    <form id="openid_form" style="display:none" action="/users/authenticate" method="post">
+        <input type="hidden" name="fkey" value="56e27a2b8c93982ad8e873bff3c18d89" />
+
+        <!-- OAuth form elemnents -->
+        <input type="hidden" id="oauth_version" name="oauth_version" />
+        <input type="hidden" id="oauth_server"  name="oauth_server" />
+
+        <!-- Simple OpenID Selector -->
+        <div id="openid_choice">
+            <div id="openid_btns"></div>
+        </div>
+
+        <div>
+            <noscript>
+            <p>OpenID is a service that allows you to log on to many different websites using a single identity.
+            Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+            </noscript>
+        </div>
+
+            <div id="forgot-password" style="display: none;">
+                <p>If you&rsquo;ve forgotten or lost your login information</p>
+                <p style="margin-left:30px; margin-bottom:30px;"><b style="font-size:130%"><a href="/users/account-recovery">click here to recover your account</a></b></p>
+            </div>
+
+        <!-- /Simple OpenID Selector -->
+        <div id="simple-openid-selector">
+            <div id="openid_input_area">
+            </div>
+            <p>Or, you can manually enter your OpenID</p>
+
+            <table id="openid-url-input">
+                <tr>
+                    <td class="vt large">
+                        <input id="openid_identifier" name="openid_identifier" class="openid-identifier inputField" type="text" tabindex="100">
+                    </td>
+                    <td class="vt large">
+                        <input id="submit-button" type="submit" value="Log In" tabindex="101" class="openid-submit">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+        </div>
+    </div>
+</div>
+
+<div id="footer"></div>
+
+</body>
+</html>
