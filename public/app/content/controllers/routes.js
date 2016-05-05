@@ -19,8 +19,4 @@ app.config(['$stateProvider', function ($stateProvider) {
                 }]
             }
         });
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

@@ -62,8 +62,4 @@ app.controller('photosCtrl', ['$scope', 'Upload', 'Photos', '$window', 'SERVER_U
         $window.open(SERVER_URL + '/upload/' + photo.filename, '_blank');
     };
 
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

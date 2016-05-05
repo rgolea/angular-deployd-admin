@@ -3,21 +3,14 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-<<<<<<< HEAD
 
     $scope.posts = Content.query();
 
-=======
-    
-    $scope.posts = Content.query();
-    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.newPost = new Content();
 
     $scope.reset = function () {
         $scope.newPost = new Content();
     };
-<<<<<<< HEAD
 
     $scope.show = function (post) {
         $scope.newPost = post;
@@ -27,28 +20,13 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
         var i = -1;
         var j = 0;
 
-=======
-    
-    $scope.show = function (post) {
-        $scope.newPost = post;
-    };
-    
-    $scope.save = function () {
-        var i = -1; 
-        var j = 0;
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.posts.forEach(function(post){
             if(post.id === $scope.newPost.id){
                 i = j;
             }
             j = j++;
         });
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.newPost.$save().then(function (success) {
             if (i >= 0) {
                 $scope.posts[i] = success;
@@ -79,11 +57,7 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
             }
         });
     };
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.delete = function ($event, post) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -99,11 +73,7 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
                 var i = $scope.posts.indexOf(post);
                 $scope.posts.splice(i, 1);
                 $scope.reset();
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {
@@ -123,8 +93,4 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
             });
         });
     };
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

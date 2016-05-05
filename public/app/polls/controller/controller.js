@@ -3,33 +3,21 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-<<<<<<< HEAD
 
     $scope.questions = Questions.query();
 
 
-=======
-    
-    $scope.questions = Questions.query();
-    
-    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.newQuestion = new Questions();
     $scope.newQuestion.answers = [];
 
     $scope.addQuestion = function(){
         $scope.newQuestion.answers.push({text: ''});
     };
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.reset = function () {
         $scope.newQuestion = new Questions();
         $scope.newQuestion.answers = [];
     };
-<<<<<<< HEAD
 
     $scope.show = function (question) {
         $scope.newQuestion = question;
@@ -39,28 +27,13 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
         var i = -1;
         var j = 0;
 
-=======
-    
-    $scope.show = function (question) {
-        $scope.newQuestion = question;
-    };
-    
-    $scope.save = function () {
-        var i = -1; 
-        var j = 0;
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.questions.forEach(function(question){
             if(question.id === $scope.newQuestion.id){
                 i = j;
             }
             j = j++;
         });
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.newQuestion.$save().then(function (success) {
             if (i >= 0) {
                 $scope.questions[i] = success;
@@ -91,11 +64,7 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
             }
         });
     };
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.delete = function ($event, question) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -111,11 +80,7 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
                 var i = $scope.questions.indexOf(question);
                 $scope.questions.splice(i, 1);
                 $scope.reset();
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {
@@ -135,8 +100,4 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
             });
         });
     };
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

@@ -1,10 +1,6 @@
 app.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-<<<<<<< HEAD
         .state('admin.photos', {
-=======
-        .state('dashboard.photos', {
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             url: '/photos',
             templateUrl: '/dist/app/photos/partials/dashboard.photos.html',
             controller: 'photosCtrl',
@@ -23,8 +19,4 @@ app.config(['$stateProvider', function ($stateProvider) {
                 }]
             }
         });
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

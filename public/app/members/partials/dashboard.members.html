@@ -8,11 +8,7 @@
             <md-list-item ng-repeat="member in members | filter: searchMembers" ng-click="edit(member)" aria-label="Edit member" class="md-2-line">
                 <img ng-src="{{member.photo}}" class="md-avatar" alt="{{member.lastName}}, {{member.firstName}}" ng-if="member.photo" />
                 <img ng-src="http://placehold.it/300x300" class="md-avatar" alt="No picture" ng-if="!member.photo" />
-<<<<<<< HEAD
                 <div class="md-list-item-text">
-=======
-                <div class="md-list-item-text">    
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
                     <h3>{{member.lastName}}, {{member.firstName}}</h3>
                     <p>{{member.fullCategory.name}}</p>
                 </div>
@@ -70,8 +66,4 @@
             </form>
         </md-content>
     </md-content>
-<<<<<<< HEAD
 </md-content>
-=======
-</md-content>
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

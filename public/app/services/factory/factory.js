@@ -8,8 +8,4 @@ app.factory('ServicesCategory', ['$resource', 'SERVER_URL', function ($resource,
     return $resource(SERVER_URL + '/services-category/:id', {
         id: "@id"
     });
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

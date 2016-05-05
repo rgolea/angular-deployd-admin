@@ -34,15 +34,9 @@ app.controller('servicesCtrl', ['$scope', 'Services', 'ServicesCategory', '$mdTo
             }
             j = j++;
         });
-<<<<<<< HEAD
 
         var relatedCategory;
 
-=======
-        
-        var relatedCategory;
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.categories.forEach(function (category) {
             if ($scope.newService.category === category.id) {
                 relatedCategory = category;
@@ -50,15 +44,9 @@ app.controller('servicesCtrl', ['$scope', 'Services', 'ServicesCategory', '$mdTo
         });
 
         $scope.newService.$save().then(function (success) {
-<<<<<<< HEAD
 
             success.relatedCategory = relatedCategory;
 
-=======
-            
-            success.relatedCategory = relatedCategory;
-            
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             if (i >= 0) {
                 $scope.services[i] = success;
             } else {
@@ -183,8 +171,4 @@ app.controller('servicesCtrl', ['$scope', 'Services', 'ServicesCategory', '$mdTo
         });
     };
 
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

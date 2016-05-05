@@ -24,26 +24,16 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
     };
 
     $scope.save = function () {
-<<<<<<< HEAD
         var i = -1;
         var j = 0;
 
-=======
-        var i = -1; 
-        var j = 0;
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.posts.forEach(function(post){
             if(post.id === $scope.newPost.id){
                 i = j;
             }
             j = j++;
         });
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         $scope.newPost.$save().then(function (success) {
             if (i >= 0) {
                 $scope.posts[i] = success;
@@ -94,11 +84,7 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
                     $scope.hideComments();
                 }
                 $scope.reset();
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {
@@ -232,8 +218,4 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
         });
     };
 
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

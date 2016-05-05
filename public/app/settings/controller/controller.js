@@ -1,13 +1,7 @@
 app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'THEMES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, THEMES) {
-<<<<<<< HEAD
 
     $scope.themes = THEMES;
 
-=======
-    
-    $scope.themes = THEMES;
-        
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
     $scope.settings = Settings.query();
     $scope.newSetting = new Settings();
 
@@ -16,11 +10,7 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
     };
 
     $scope.save = function () {
-<<<<<<< HEAD
         var i = -1;
-=======
-        var i = -1; 
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
         var j = 0;
 
         $scope.settings.forEach(function (setting) {
@@ -31,19 +21,11 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
         });
 
         $scope.newSetting.$save().then(function (success) {
-<<<<<<< HEAD
 
             if(success.active){
                 $rootScope.settings = success;
             };
 
-=======
-            
-            if(success.active){
-                $rootScope.settings = success;
-            };
-            
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
             if (i >= 0) {
                 $scope.settings[i] = success;
             } else {
@@ -113,8 +95,4 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
     $scope.open = function (setting) {
         $scope.newSetting = setting;
     };
-<<<<<<< HEAD
 }]);
-=======
-}]);
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7
