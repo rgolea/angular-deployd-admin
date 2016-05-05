@@ -1,8 +1,20 @@
-# angular-deployd-admin  (Angular CMS contains 3 User interfaces : Database and API dashboard, Website control panel,  website)
+# angular-deployd-admin  
+---
+Angular CMS contains 3 User interfaces : Database and API dashboard, Website control panel,  website 
 ---
 
-
+  
+## Website Admin Dashboard
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/67625496@N06/26733225002/in/dateposted-public/" title="marscms-dashboard1"><img src="https://farm8.staticflickr.com/7429/26733225002_5bc7951f14_b.jpg" width="937" height="706" alt="marscms-dashboard1"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+## Website Admin Dashboard - Settings page
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/67625496@N06/26733383952/in/dateposted-public/" title="settings-dashboard1"><img src="https://farm8.staticflickr.com/7322/26733383952_a642a4c2d3_b.jpg" width="970" height="734" alt="settings-dashboard1"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+## Website Admin Dashboard - Login page - Private Zone
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/67625496@N06/26733384052/in/dateposted-public/" title="loginpage"><img src="https://farm8.staticflickr.com/7086/26733384052_61be7f0bdb_b.jpg" width="971" height="737" alt="loginpage"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+## API and Database Admin DeployD Dashboard
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/67625496@N06/26827076945/in/dateposted-public/" title="deployd-dashboard"><img src="https://farm8.staticflickr.com/7191/26827076945_98a3a0e189_b.jpg" width="972" height="740" alt="deployd-dashboard"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 [![Join the chat at https://gitter.im/rgolea/angular-deployd-admin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rgolea/angular-deployd-admin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This is an Angular.js & Deployd admin system. It's been maintained by [@rgolea](https://github.com/rgolea), [@andreialecu](https://github.com/andreialecu), [@vaesergio](https://github.com/vaesergio) and [@moorthi07] (https://github.com/moorthi07)
