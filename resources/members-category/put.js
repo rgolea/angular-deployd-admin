@@ -7,8 +7,4 @@ dpd.members.get().then(function(members){
             }
         });
     });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 6e4411260f151d7963affd882deca61537a10fa7

@@ -1,7 +1,7 @@
 app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '$rootScope', 'THEMES', function ($scope, Settings, $mdToast, $mdDialog, $rootScope, THEMES) {
-
+    
     $scope.themes = THEMES;
-
+        
     $scope.settings = Settings.query();
     $scope.newSetting = new Settings();
 
@@ -10,7 +10,7 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
     };
 
     $scope.save = function () {
-        var i = -1;
+        var i = -1; 
         var j = 0;
 
         $scope.settings.forEach(function (setting) {
@@ -21,11 +21,11 @@ app.controller('settingsCtrl', ['$scope', 'Settings', '$mdToast', '$mdDialog', '
         });
 
         $scope.newSetting.$save().then(function (success) {
-
+            
             if(success.active){
                 $rootScope.settings = success;
             };
-
+            
             if (i >= 0) {
                 $scope.settings[i] = success;
             } else {

@@ -3,37 +3,37 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-
+    
     $scope.questions = Questions.query();
-
-
+    
+    
     $scope.newQuestion = new Questions();
     $scope.newQuestion.answers = [];
 
     $scope.addQuestion = function(){
         $scope.newQuestion.answers.push({text: ''});
     };
-
+    
     $scope.reset = function () {
         $scope.newQuestion = new Questions();
         $scope.newQuestion.answers = [];
     };
-
+    
     $scope.show = function (question) {
         $scope.newQuestion = question;
     };
-
+    
     $scope.save = function () {
-        var i = -1;
+        var i = -1; 
         var j = 0;
-
+        
         $scope.questions.forEach(function(question){
             if(question.id === $scope.newQuestion.id){
                 i = j;
             }
             j = j++;
         });
-
+        
         $scope.newQuestion.$save().then(function (success) {
             if (i >= 0) {
                 $scope.questions[i] = success;
@@ -64,7 +64,7 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
             }
         });
     };
-
+    
     $scope.delete = function ($event, question) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -80,7 +80,7 @@ app.controller('pollsCtrl', ['$scope', 'Questions', '$mdSidenav', '$mdToast', '$
                 var i = $scope.questions.indexOf(question);
                 $scope.questions.splice(i, 1);
                 $scope.reset();
-
+                
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {

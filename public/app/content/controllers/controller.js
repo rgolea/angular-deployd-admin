@@ -3,30 +3,30 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
     $scope.toggle = function () {
         $mdSidenav('left').toggle();
     };
-
+    
     $scope.posts = Content.query();
-
+    
     $scope.newPost = new Content();
 
     $scope.reset = function () {
         $scope.newPost = new Content();
     };
-
+    
     $scope.show = function (post) {
         $scope.newPost = post;
     };
-
+    
     $scope.save = function () {
-        var i = -1;
+        var i = -1; 
         var j = 0;
-
+        
         $scope.posts.forEach(function(post){
             if(post.id === $scope.newPost.id){
                 i = j;
             }
             j = j++;
         });
-
+        
         $scope.newPost.$save().then(function (success) {
             if (i >= 0) {
                 $scope.posts[i] = success;
@@ -57,7 +57,7 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
             }
         });
     };
-
+    
     $scope.delete = function ($event, post) {
         $mdDialog.show(
             $mdDialog.confirm()
@@ -73,7 +73,7 @@ app.controller('contentCtrl', ['$scope', 'Content', '$mdSidenav', '$mdToast', '$
                 var i = $scope.posts.indexOf(post);
                 $scope.posts.splice(i, 1);
                 $scope.reset();
-
+                
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {

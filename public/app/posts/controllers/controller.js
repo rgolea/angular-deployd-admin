@@ -24,16 +24,16 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
     };
 
     $scope.save = function () {
-        var i = -1;
+        var i = -1; 
         var j = 0;
-
+        
         $scope.posts.forEach(function(post){
             if(post.id === $scope.newPost.id){
                 i = j;
             }
             j = j++;
         });
-
+        
         $scope.newPost.$save().then(function (success) {
             if (i >= 0) {
                 $scope.posts[i] = success;
@@ -84,7 +84,7 @@ app.controller('postsCtrl', ['$scope', 'Posts', '$mdSidenav', '$rootScope', 'Slu
                     $scope.hideComments();
                 }
                 $scope.reset();
-
+                
             }, function (err) {
                 console.log(err);
                 if (err.status === 401) {

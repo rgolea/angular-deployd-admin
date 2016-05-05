@@ -34,9 +34,9 @@ app.controller('servicesCtrl', ['$scope', 'Services', 'ServicesCategory', '$mdTo
             }
             j = j++;
         });
-
+        
         var relatedCategory;
-
+        
         $scope.categories.forEach(function (category) {
             if ($scope.newService.category === category.id) {
                 relatedCategory = category;
@@ -44,9 +44,9 @@ app.controller('servicesCtrl', ['$scope', 'Services', 'ServicesCategory', '$mdTo
         });
 
         $scope.newService.$save().then(function (success) {
-
+            
             success.relatedCategory = relatedCategory;
-
+            
             if (i >= 0) {
                 $scope.services[i] = success;
             } else {
